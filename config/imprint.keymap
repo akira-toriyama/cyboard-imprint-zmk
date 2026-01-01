@@ -254,19 +254,24 @@
 };
 
 // right hand trackball configuration
-
-// &trackball_peripheral_listener {
-//    input-processors =
-//     activate layer 3 within 500ms of the trackball moving
-//     <&zip_temp_layer 3 500>;
-// };
+&trackball_peripheral_listener {
+    scroller {
+        layers = <NUM_LAYER LL_LAYER>;
+        input-processors =
+            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+            <&zip_xy_scaler 3 64>,
+            // make this trackball output scrolling events by default instead of cursor movement,
+            <&zip_xy_to_scroll_mapper>,
+            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
+            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+    };
+};
 
 //left hand trackball configuration
-
 &trackball_central_listener {
     input-processors =
         // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
-        <&zip_xy_scaler 1 32>,
+        <&zip_xy_scaler 3 64>,
         // make this trackball output scrolling events by default instead of cursor movement,
         <&zip_xy_to_scroll_mapper>,
         // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
@@ -638,7 +643,7 @@
         &kp ESCAPE   &_z     &_x                               &_c                               &_v                          &_b                    &_n        &_m                  &_up                       &_tab     &_delete               &kp RETURN
         &none        &none   &_layer SYMBOL2_LAYER X_LH_SYM2   &_layer SYMBOL1_LAYER X_LH_SYM1   &_layer NUM_LAYER X_LH_NUM                                     &_left               &_down                     &_right   &none                  &none
                                                                &kp LEFT_CONTROL                  &kp LEFT_ALT                 &none                  &mkp MB3   &mkp MB1             &mkp MB2                                                    
-                                                               &mt T_LL                          &mt T_LR                     &bootloader            &none      &_t_r LEFT_ALT ESC   &_t_r LEFT_CONTROL SPACE                                    
+                                                               &mt T_LL                          &mt T_LR                     &bootloader            &mo NUM_LAYER      &_t_r LEFT_ALT ESC   &_t_r LEFT_CONTROL SPACE                                    
       >;
     };
     NUM_LAYER {
