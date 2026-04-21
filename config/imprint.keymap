@@ -12,13 +12,14 @@
 #define NUM_LAYER 1
 #define SYMBOL1_LAYER 2
 #define SYMBOL2_LAYER 3
-#define LL_LAYER 4
-#define TAB_LAYER 5
-#define DELETE_LAYER 6
-#define LEFT_ARROW_LAYER 7
-#define RIGHT_ARROW_LAYER 8
-#define UP_ARROW_LAYER 9
-#define DOWN_ARROW_LAYER 10
+#define FN_LAYER 4
+#define LL_LAYER 5
+#define TAB_LAYER 6
+#define DELETE_LAYER 7
+#define LEFT_ARROW_LAYER 8
+#define RIGHT_ARROW_LAYER 9
+#define UP_ARROW_LAYER 10
+#define DOWN_ARROW_LAYER 11
 
 // ------------------------------------
 // エイリアス
@@ -72,6 +73,7 @@
 #define X_LH_NUM RG(RA(RS(RC(LANGUAGE_5))))
 #define X_LH_SYM1 RG(RA(RS(RC(LANGUAGE_6))))
 #define X_LH_SYM2 RG(RA(RS(RC(LANGUAGE_7))))
+#define X_LH_FN RG(RA(RS(RC(LANGUAGE_8))))
 
 // LL
 #define X_LL_AA INTERNATIONAL_1
@@ -641,7 +643,7 @@
         &kp X_QQ     &_q     &_w                               &_e                               &_r                          &_t                    &_y        &_u                  &_i                        &_o       &_p                    &kp X_PP
         &kp SPACE    &_a     &_s                               &_d                               &_f                          &_g                    &_h        &_j                  &_k                        &_l       &lt LL_LAYER X_LL_LL   &kp BACKSPACE
         &kp ESCAPE   &_z     &_x                               &_c                               &_v                          &_b                    &_n        &_m                  &_up                       &_tab     &_delete               &kp RETURN
-        &none        &none   &_layer SYMBOL2_LAYER X_LH_SYM2   &_layer SYMBOL1_LAYER X_LH_SYM1   &_layer NUM_LAYER X_LH_NUM                                     &_left               &_down                     &_right   &none                  &none
+        &none        &_layer FN_LAYER X_LH_FN   &_layer SYMBOL2_LAYER X_LH_SYM2   &_layer SYMBOL1_LAYER X_LH_SYM1   &_layer NUM_LAYER X_LH_NUM                                     &_left               &_down                     &_right   &none                  &none
                                                                &kp LEFT_CONTROL                  &kp LEFT_ALT                 &none                  &mkp MB3   &mkp MB1             &mkp MB2                                                    
                                                                &mt T_LL                          &mt T_LR                     &bootloader            &mo NUM_LAYER      &_t_r LEFT_ALT ESC   &_t_r LEFT_CONTROL SPACE                                    
       >;
@@ -674,6 +676,16 @@
         &none   &none   &none   &none              &none                                                     &none                   &none                      &none                      &none                       &none
                                 &kp LEFT_CONTROL   &kp LEFT_ALT   &none                  &mkp MB3            &mkp MB1                &mkp MB2                                                                          
                                 &mt T_LL           &mt T_LR       &bootloader            &none               &_t_r LEFT_ALT ESC      &_t_r LEFT_CONTROL SPACE                                                          
+      >;
+    };
+    FN_LAYER {
+      bindings = <
+        &none   &none   &none   &none              &none          &none                  &none           &kp F1       &kp F2             &kp F3   &kp F4    &none
+        &none   &none   &none   &none              &none          &none                  &none           &kp F5       &kp F6             &kp F7   &kp F8   &none
+        &none   &none   &none   &none              &none          &none                  &none          &kp F9      &kp F10              &kp F11  &kp F12     &none
+        &none   &none   &none   &none              &none                                                  &none                &none                      &none            &none   &none
+                                &kp LEFT_CONTROL   &kp LEFT_ALT   &none                  &mkp MB3         &mkp MB1             &mkp MB2                                            
+                                &mt T_LL           &mt T_LR       &bootloader            &none            &_t_r LEFT_ALT ESC   &_t_r LEFT_CONTROL SPACE                            
       >;
     };
     LL_LAYER {
