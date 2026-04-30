@@ -52,18 +52,20 @@
 #define KEY_POSITION_LEFT_ARROW 41
 #define KEY_POSITION_DOWN_ARROW 42
 #define KEY_POSITION_RIGHT_ARROW 43
-#define KEY_POSITION_LEFT_SIDE 0  1  2  3  4  5 \
-12  13  14  15  16 17 \
-24  25  26  27  28 29 \
-36 37 38 39 40 \
-46 47 48 \
-52 53 54
-#define KEY_POSITION_RIGHT_SIDE 6 7  8  9 10 11  \
-18  19  20  21  22  23 \
-30  31  32  33 34 35\
-41 42 43 44 45 \
-49 50 51 \
-55 56 57
+#define KEY_POSITION_LEFT_SIDE \
+   0  1  2  3  4  5 \
+  12 13 14 15 16 17 \
+  24 25 26 27 28 29 \
+  36 37 38 39 40 \
+  46 47 48 \
+  52 53 54
+#define KEY_POSITION_RIGHT_SIDE \
+   6  7  8  9 10 11 \
+  18 19 20 21 22 23 \
+  30 31 32 33 34 35 \
+  41 42 43 44 45 \
+  49 50 51 \
+  55 56 57
 #define KEY_POSITION_L_THUMB KEY_POSITION_LL KEY_POSITION_LR
 
 // ------------------------------------
@@ -257,27 +259,27 @@
 
 // right hand trackball configuration
 &trackball_peripheral_listener {
-    scroller {
-        layers = <NUM_LAYER LL_LAYER>;
-        input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
-            <&zip_xy_scaler 3 64>,
-            // make this trackball output scrolling events by default instead of cursor movement,
-            <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
+  scroller {
+    layers = <NUM_LAYER LL_LAYER>;
+    input-processors =
+      // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+      <&zip_xy_scaler 3 64>,
+      // make this trackball output scrolling events by default instead of cursor movement,
+      <&zip_xy_to_scroll_mapper>,
+      // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
+      <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+  };
 };
 
-//left hand trackball configuration
+// left hand trackball configuration
 &trackball_central_listener {
-    input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
-        <&zip_xy_scaler 3 64>,
-        // make this trackball output scrolling events by default instead of cursor movement,
-        <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
-        <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+  input-processors =
+    // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+    <&zip_xy_scaler 3 64>,
+    // make this trackball output scrolling events by default instead of cursor movement,
+    <&zip_xy_to_scroll_mapper>,
+    // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
+    <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
 
 / {
@@ -297,7 +299,6 @@
     };
   };
   macros {
-
     // レイヤー移動で効果音を鳴らす
     to_default_layer_macro: to_default_layer_macro {
       compatible = "zmk,behavior-macro-one-param";
@@ -809,8 +810,8 @@
         &kp SPACE    &_a     &_s                               &_d                               &_f                          &_g                    &_h        &_j                  &_k                        &_l       &lt LL_LAYER X_LL_LL   &kp BACKSPACE
         &kp ESCAPE   &_z     &_x                               &_c                               &_v                          &_b                    &_n        &_m                  &_up                       &_tab     &_delete               &kp RETURN
         &none        &_layer FN_LAYER X_LH_FN   &_layer SYMBOL2_LAYER X_LH_SYM2   &_layer SYMBOL1_LAYER X_LH_SYM1   &_layer NUM_LAYER X_LH_NUM                                     &_left               &_down                     &_right   &none                  &none
-                                                               &kp LEFT_CONTROL                  &kp LEFT_ALT                 &none                  &mkp MB3   &mkp MB1             &mkp MB2                                                    
-                                                               &mt T_LL                          &mt T_LR                     &bootloader            &mo NUM_LAYER      &_t_r LEFT_ALT ESC   &_t_r LEFT_CONTROL SPACE                                    
+                                                               &kp LEFT_CONTROL                  &kp LEFT_ALT                 &none                  &mkp MB3   &mkp MB1             &mkp MB2
+                                                               &mt T_LL                          &mt T_LR                     &bootloader            &mo NUM_LAYER      &_t_r LEFT_ALT ESC   &_t_r LEFT_CONTROL SPACE
       >;
     };
     NUM_LAYER {
@@ -819,8 +820,8 @@
         &none   &none   &none   &none              &none          &none                  &none            &eiji_macro N4       &eiji_macro N5             &eiji_macro N6   &none   &none
         &none   &none   &none   &none              &none          &none                  &eiji_macro N0   &eiji_macro N1       &eiji_macro N2             &eiji_macro N3   &none   &none
         &none   &none   &none   &none              &none                                                  &none                &none                      &none            &none   &none
-                                &kp LEFT_CONTROL   &kp LEFT_ALT   &none                  &mkp MB3         &mkp MB1             &mkp MB2                                            
-                                &mt T_LL           &mt T_LR       &bootloader            &none            &_t_r LEFT_ALT ESC   &_t_r LEFT_CONTROL SPACE                            
+                                &kp LEFT_CONTROL   &kp LEFT_ALT   &none                  &mkp MB3         &mkp MB1             &mkp MB2
+                                &mt T_LL           &mt T_LR       &bootloader            &none            &_t_r LEFT_ALT ESC   &_t_r LEFT_CONTROL SPACE
       >;
     };
     SYMBOL1_LAYER {
@@ -829,8 +830,8 @@
         &none   &none   &none   &none              &none          &none                  &eiji_macro HASH            &eiji_macro COMMA          &eiji_macro PERIOD         &eiji_macro SEMICOLON     &eiji_macro COLON       &eiji_macro AT_SIGN
         &none   &none   &none   &none              &none          &none                  &eiji_macro DOUBLE_QUOTES   &eiji_macro SINGLE_QUOTE   &eiji_macro GRAVE          &eiji_macro SLASH         &eiji_macro BACKSLASH   &none
         &none   &none   &none   &none              &none                                                             &none                      &none                      &none                     &none                   &none
-                                &kp LEFT_CONTROL   &kp LEFT_ALT   &none                  &mkp MB3                    &mkp MB1                   &mkp MB2                                                                     
-                                &mt T_LL           &mt T_LR       &bootloader            &none                       &_t_r LEFT_ALT ESC         &_t_r LEFT_CONTROL SPACE                                                     
+                                &kp LEFT_CONTROL   &kp LEFT_ALT   &none                  &mkp MB3                    &mkp MB1                   &mkp MB2
+                                &mt T_LL           &mt T_LR       &bootloader            &none                       &_t_r LEFT_ALT ESC         &_t_r LEFT_CONTROL SPACE
       >;
     };
     SYMBOL2_LAYER {
@@ -839,8 +840,8 @@
         &none   &none   &none   &none              &none          &none                  &eiji_macro EQUAL   &eiji_macro PLUS        &eiji_macro MINUS          &eiji_macro ASTERISK       &eiji_macro PERCENT         &eiji_macro DOLLAR
         &none   &none   &none   &none              &none          &none                  &eiji_macro TILDE   &eiji_macro LPAR        &eiji_macro RPAR           &eiji_macro LEFT_BRACE     &eiji_macro RIGHT_BRACE     &none
         &none   &none   &none   &none              &none                                                     &none                   &none                      &none                      &none                       &none
-                                &kp LEFT_CONTROL   &kp LEFT_ALT   &none                  &mkp MB3            &mkp MB1                &mkp MB2                                                                          
-                                &mt T_LL           &mt T_LR       &bootloader            &none               &_t_r LEFT_ALT ESC      &_t_r LEFT_CONTROL SPACE                                                          
+                                &kp LEFT_CONTROL   &kp LEFT_ALT   &none                  &mkp MB3            &mkp MB1                &mkp MB2
+                                &mt T_LL           &mt T_LR       &bootloader            &none               &_t_r LEFT_ALT ESC      &_t_r LEFT_CONTROL SPACE
       >;
     };
     FN_LAYER {
@@ -849,8 +850,8 @@
         &none   &none   &none   &none              &none          &none                  &none           &kp F5       &kp F6             &kp F7   &kp F8   &none
         &none   &none   &none   &none              &none          &none                  &none          &kp F9      &kp F10              &kp F11  &kp F12     &none
         &none   &none   &none   &none              &none                                                  &none                &none                      &none            &none   &none
-                                &kp LEFT_CONTROL   &kp LEFT_ALT   &none                  &mkp MB3         &mkp MB1             &mkp MB2                                            
-                                &mt T_LL           &mt T_LR       &bootloader            &none            &_t_r LEFT_ALT ESC   &_t_r LEFT_CONTROL SPACE                            
+                                &kp LEFT_CONTROL   &kp LEFT_ALT   &none                  &mkp MB3         &mkp MB1             &mkp MB2
+                                &mt T_LL           &mt T_LR       &bootloader            &none            &_t_r LEFT_ALT ESC   &_t_r LEFT_CONTROL SPACE
       >;
     };
     LL_LAYER {
@@ -859,8 +860,8 @@
         &kp X_LL_AA   &kp X_LL_A   &kp X_LL_S      &kp X_LL_D      &kp X_LL_F      &kp X_LL_G            &none   &none   &none   &none   &none   &none
         &kp X_LL_ZZ   &kp X_LL_Z   &kp X_LL_X      &kp X_LL_C      &kp X_LL_V      &kp X_LL_B            &none   &none   &none   &none   &none   &none
         &none         &none        &kp X_LL_SYM2   &kp X_LL_SYM1   &kp X_LL_NUM                                  &none   &none   &none   &none   &none
-                                                   &none           &none           &none                 &none   &none   &none                   
-                                                   &kp X_LL_T_LL   &kp X_LL_T_LR   &none                 &none   &none   &none                   
+                                                   &none           &none           &none                 &none   &none   &none
+                                                   &kp X_LL_T_LL   &kp X_LL_T_LR   &none                 &none   &none   &none
       >;
     };
     TAB_LAYER {
@@ -869,8 +870,8 @@
         &kp X_TAB_AA   &kp X_TAB_A   &kp X_TAB_S      &kp X_TAB_D      &kp X_TAB_F      &kp X_TAB_G            &none   &none   &none   &none   &none   &none
         &kp X_TAB_ZZ   &kp X_TAB_Z   &kp X_TAB_X      &kp X_TAB_C      &kp X_TAB_V      &kp X_TAB_B            &none   &none   &none   &none   &none   &none
         &none          &none         &kp X_TAB_SYM2   &kp X_TAB_SYM1   &kp X_TAB_NUM                                   &none   &none   &none   &none   &none
-                                                      &none            &none            &none                  &none   &none   &none                   
-                                                      &kp X_TAB_T_LL   &kp X_TAB_T_LR   &none                  &none   &none   &none                   
+                                                      &none            &none            &none                  &none   &none   &none
+                                                      &kp X_TAB_T_LL   &kp X_TAB_T_LR   &none                  &none   &none   &none
       >;
     };
     DELETE_LAYER {
@@ -879,8 +880,8 @@
         &kp X_DELETE_AA   &kp X_DELETE_A   &kp X_DELETE_S      &kp X_DELETE_D      &kp X_DELETE_F      &kp X_DELETE_G            &none   &none   &none   &none   &none   &none
         &kp X_DELETE_ZZ   &kp X_DELETE_Z   &kp X_DELETE_X      &kp X_DELETE_C      &kp X_DELETE_V      &kp X_DELETE_B            &none   &none   &none   &none   &none   &none
         &none             &none            &kp X_DELETE_SYM2   &kp X_DELETE_SYM1   &kp X_DELETE_NUM                                      &none   &none   &none   &none   &none
-                                                               &none               &none               &none                     &none   &none   &none                   
-                                                               &kp X_DELETE_T_LL   &kp X_DELETE_T_LR   &none                     &none   &none   &none                   
+                                                               &none               &none               &none                     &none   &none   &none
+                                                               &kp X_DELETE_T_LL   &kp X_DELETE_T_LR   &none                     &none   &none   &none
       >;
     };
     LEFT_ARROW_LAYER {
@@ -889,8 +890,8 @@
         &kp X_LEFT_ARROW_AA   &kp X_LEFT_ARROW_A   &kp X_LEFT_ARROW_S      &kp X_LEFT_ARROW_D      &kp X_LEFT_ARROW_F      &kp X_LEFT_ARROW_G            &none   &none   &none      &none            &none   &none
         &kp X_LEFT_ARROW_ZZ   &kp X_LEFT_ARROW_Z   &kp X_LEFT_ARROW_X      &kp X_LEFT_ARROW_C      &kp X_LEFT_ARROW_V      &kp X_LEFT_ARROW_B            &none   &none   &none      &none            &none   &none
         &none                 &none                &kp X_LEFT_ARROW_SYM2   &kp X_LEFT_ARROW_SYM1   &kp X_LEFT_ARROW_NUM                                          &none   &kp HOME   &msc SCRL_LEFT   &none   &none
-                                                                           &none                   &none                   &none                         &none   &none   &none                               
-                                                                           &kp X_LEFT_ARROW_T_LL   &kp X_LEFT_ARROW_T_LR   &none                         &none   &none   &none                               
+                                                                           &none                   &none                   &none                         &none   &none   &none
+                                                                           &kp X_LEFT_ARROW_T_LL   &kp X_LEFT_ARROW_T_LR   &none                         &none   &none   &none
       >;
     };
     RIGHT_ARROW_LAYER {
@@ -899,8 +900,8 @@
         &kp X_RIGHT_ARROW_AA   &kp X_RIGHT_ARROW_A   &kp X_RIGHT_ARROW_S      &kp X_RIGHT_ARROW_D      &kp X_RIGHT_ARROW_F      &kp X_RIGHT_ARROW_G            &none   &none             &none     &none   &none   &none
         &kp X_RIGHT_ARROW_ZZ   &kp X_RIGHT_ARROW_Z   &kp X_RIGHT_ARROW_X      &kp X_RIGHT_ARROW_C      &kp X_RIGHT_ARROW_V      &kp X_RIGHT_ARROW_B            &none   &none             &none     &none   &none   &none
         &none                  &none                 &kp X_RIGHT_ARROW_SYM2   &kp X_RIGHT_ARROW_SYM1   &kp X_RIGHT_ARROW_NUM                                           &msc SCRL_RIGHT   &kp END   &none   &none   &none
-                                                                              &none                    &none                    &none                          &none   &none             &none                     
-                                                                              &kp X_RIGHT_ARROW_T_LL   &kp X_RIGHT_ARROW_T_LR   &none                          &none   &none             &none                     
+                                                                              &none                    &none                    &none                          &none   &none             &none
+                                                                              &kp X_RIGHT_ARROW_T_LL   &kp X_RIGHT_ARROW_T_LR   &none                          &none   &none             &none
       >;
     };
     UP_ARROW_LAYER {
@@ -909,8 +910,8 @@
         &kp X_UP_ARROW_AA   &kp X_UP_ARROW_A   &kp X_UP_ARROW_S      &kp X_UP_ARROW_D      &kp X_UP_ARROW_F      &kp X_UP_ARROW_G            &none   &none         &none   &none          &none   &none
         &kp X_UP_ARROW_ZZ   &kp X_UP_ARROW_Z   &kp X_UP_ARROW_X      &kp X_UP_ARROW_C      &kp X_UP_ARROW_V      &kp X_UP_ARROW_B            &none   &none         &none   &none          &none   &none
         &none               &none              &kp X_UP_ARROW_SYM2   &kp X_UP_ARROW_SYM1   &kp X_UP_ARROW_NUM                                        &kp PAGE_UP   &none   &msc SCRL_UP   &none   &none
-                                                                     &none                 &none                 &none                       &none   &none         &none                          
-                                                                     &kp X_UP_ARROW_T_LL   &kp X_UP_ARROW_T_LR   &none                       &none   &none         &none                          
+                                                                     &none                 &none                 &none                       &none   &none         &none
+                                                                     &kp X_UP_ARROW_T_LL   &kp X_UP_ARROW_T_LR   &none                       &none   &none         &none
       >;
     };
     DOWN_ARROW_LAYER {
@@ -919,8 +920,8 @@
         &kp X_DOWN_ARROW_AA   &kp X_DOWN_ARROW_A   &kp X_DOWN_ARROW_S      &kp X_DOWN_ARROW_D      &kp X_DOWN_ARROW_F      &kp X_DOWN_ARROW_G            &none   &none           &none   &none            &none   &none
         &kp X_DOWN_ARROW_ZZ   &kp X_DOWN_ARROW_Z   &kp X_DOWN_ARROW_X      &kp X_DOWN_ARROW_C      &kp X_DOWN_ARROW_V      &kp X_DOWN_ARROW_B            &none   &none           &none   &none            &none   &none
         &none                 &none                &kp X_DOWN_ARROW_SYM2   &kp X_DOWN_ARROW_SYM1   &kp X_DOWN_ARROW_NUM                                          &kp PAGE_DOWN   &none   &msc SCRL_DOWN   &none   &none
-                                                                           &none                   &none                   &none                         &none   &none           &none                            
-                                                                           &kp X_DOWN_ARROW_T_LL   &kp X_DOWN_ARROW_T_LR   &none                         &none   &none           &none                            
+                                                                           &none                   &none                   &none                         &none   &none           &none
+                                                                           &kp X_DOWN_ARROW_T_LL   &kp X_DOWN_ARROW_T_LR   &none                         &none   &none           &none
       >;
     };
   };
