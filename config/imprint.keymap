@@ -375,6 +375,168 @@
       bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N9>, <&macro_pause_for_release>, <&macro_release &kp N9>;
     };
 
+    // EIJI 切替 → 記号キー（SYMBOL1/SYMBOL2_LAYER 用）
+    en_under: en_under { // _
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp UNDERSCORE>, <&macro_pause_for_release>, <&macro_release &kp UNDERSCORE>;
+    };
+    en_pipe: en_pipe { // |
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp PIPE>, <&macro_pause_for_release>, <&macro_release &kp PIPE>;
+    };
+    en_amp: en_amp { // &
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp AMPERSAND>, <&macro_pause_for_release>, <&macro_release &kp AMPERSAND>;
+    };
+    en_excl: en_excl { // !
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp EXCLAMATION>, <&macro_pause_for_release>, <&macro_release &kp EXCLAMATION>;
+    };
+    en_q: en_q { // ?
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp QUESTION>, <&macro_pause_for_release>, <&macro_release &kp QUESTION>;
+    };
+    en_hash: en_hash { // #
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp HASH>, <&macro_pause_for_release>, <&macro_release &kp HASH>;
+    };
+    en_comma: en_comma { // ,
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp COMMA>, <&macro_pause_for_release>, <&macro_release &kp COMMA>;
+    };
+    en_dot: en_dot { // .
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp PERIOD>, <&macro_pause_for_release>, <&macro_release &kp PERIOD>;
+    };
+    en_semi: en_semi { // ;
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp SEMICOLON>, <&macro_pause_for_release>, <&macro_release &kp SEMICOLON>;
+    };
+    en_colon: en_colon { // :
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp COLON>, <&macro_pause_for_release>, <&macro_release &kp COLON>;
+    };
+    en_at: en_at { // @
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp AT_SIGN>, <&macro_pause_for_release>, <&macro_release &kp AT_SIGN>;
+    };
+    en_dq: en_dq { // "
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp DOUBLE_QUOTES>, <&macro_pause_for_release>, <&macro_release &kp DOUBLE_QUOTES>;
+    };
+    en_sq: en_sq { // '
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp SINGLE_QUOTE>, <&macro_pause_for_release>, <&macro_release &kp SINGLE_QUOTE>;
+    };
+    en_grave: en_grave { // `
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp GRAVE>, <&macro_pause_for_release>, <&macro_release &kp GRAVE>;
+    };
+    en_slash: en_slash { // /
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp SLASH>, <&macro_pause_for_release>, <&macro_release &kp SLASH>;
+    };
+    en_bsl: en_bsl { // \
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp BACKSLASH>, <&macro_pause_for_release>, <&macro_release &kp BACKSLASH>;
+    };
+    en_caret: en_caret { // ^
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp CARET>, <&macro_pause_for_release>, <&macro_release &kp CARET>;
+    };
+    en_lt: en_lt { // <
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp LESS_THAN>, <&macro_pause_for_release>, <&macro_release &kp LESS_THAN>;
+    };
+    en_gt: en_gt { // >
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp GREATER_THAN>, <&macro_pause_for_release>, <&macro_release &kp GREATER_THAN>;
+    };
+    en_lbkt: en_lbkt { // [
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp LEFT_BRACKET>, <&macro_pause_for_release>, <&macro_release &kp LEFT_BRACKET>;
+    };
+    en_rbkt: en_rbkt { // ]
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp RIGHT_BRACKET>, <&macro_pause_for_release>, <&macro_release &kp RIGHT_BRACKET>;
+    };
+    en_eq: en_eq { // =
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp EQUAL>, <&macro_pause_for_release>, <&macro_release &kp EQUAL>;
+    };
+    en_plus: en_plus { // +
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp PLUS>, <&macro_pause_for_release>, <&macro_release &kp PLUS>;
+    };
+    en_minus: en_minus { // -
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp MINUS>, <&macro_pause_for_release>, <&macro_release &kp MINUS>;
+    };
+    en_ast: en_ast { // *
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp ASTERISK>, <&macro_pause_for_release>, <&macro_release &kp ASTERISK>;
+    };
+    en_pct: en_pct { // %
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp PERCENT>, <&macro_pause_for_release>, <&macro_release &kp PERCENT>;
+    };
+    en_dollar: en_dollar { // $
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp DOLLAR>, <&macro_pause_for_release>, <&macro_release &kp DOLLAR>;
+    };
+    en_tilde: en_tilde { // ~
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp TILDE>, <&macro_pause_for_release>, <&macro_release &kp TILDE>;
+    };
+    en_lpar: en_lpar { // (
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp LPAR>, <&macro_pause_for_release>, <&macro_release &kp LPAR>;
+    };
+    en_rpar: en_rpar { // )
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp RPAR>, <&macro_pause_for_release>, <&macro_release &kp RPAR>;
+    };
+    en_lbrc: en_lbrc { // {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp LEFT_BRACE>, <&macro_pause_for_release>, <&macro_release &kp LEFT_BRACE>;
+    };
+    en_rbrc: en_rbrc { // }
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp RIGHT_BRACE>, <&macro_pause_for_release>, <&macro_release &kp RIGHT_BRACE>;
+    };
+
     // ctrl+h で Backspace を送出する用。LCTRL を明示 release してから BACKSPACE、
     // 親指キーが離されるまで保つため最後に LCTRL を press し直す。
     ctrl_h_to_backspace: ctrl_h_to_backspace {
@@ -878,9 +1040,9 @@
     };
     SYMBOL1_LAYER {
       bindings = <
-        &none  &none  &none  &none  &none  &none       &eiji_macro UNDERSCORE     &eiji_macro PIPE          &eiji_macro AMPERSAND  &eiji_macro EXCLAMATION  &eiji_macro QUESTION   &none
-        &none  &none  &none  &none  &none  &none       &eiji_macro HASH           &eiji_macro COMMA         &eiji_macro PERIOD     &eiji_macro SEMICOLON    &eiji_macro COLON      &eiji_macro AT_SIGN
-        &none  &none  &none  &none  &none  &none       &eiji_macro DOUBLE_QUOTES  &eiji_macro SINGLE_QUOTE  &eiji_macro GRAVE      &eiji_macro SLASH        &eiji_macro BACKSLASH  &none
+        &none  &none  &none  &none  &none  &none       &en_under  &en_pipe   &en_amp    &en_excl   &en_q      &none
+        &none  &none  &none  &none  &none  &none       &en_hash   &en_comma  &en_dot    &en_semi   &en_colon  &en_at
+        &none  &none  &none  &none  &none  &none       &en_dq     &en_sq     &en_grave  &en_slash  &en_bsl    &none
         &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
         &kp LEFT_CONTROL  &kp LEFT_ALT  &none          &mkp MB3  &mkp MB1                &mkp MB2
         &mt T_LL          &mt T_LR      &bootloader    &none     &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
@@ -888,9 +1050,9 @@
     };
     SYMBOL2_LAYER {
       bindings = <
-        &none  &none  &none  &none  &none  &none       &eiji_macro CARET  &eiji_macro LESS_THAN  &eiji_macro GREATER_THAN  &eiji_macro LEFT_BRACKET  &eiji_macro RIGHT_BRACKET  &none
-        &none  &none  &none  &none  &none  &none       &eiji_macro EQUAL  &eiji_macro PLUS       &eiji_macro MINUS         &eiji_macro ASTERISK      &eiji_macro PERCENT        &eiji_macro DOLLAR
-        &none  &none  &none  &none  &none  &none       &eiji_macro TILDE  &eiji_macro LPAR       &eiji_macro RPAR          &eiji_macro LEFT_BRACE    &eiji_macro RIGHT_BRACE    &none
+        &none  &none  &none  &none  &none  &none       &en_caret  &en_lt    &en_gt     &en_lbkt  &en_rbkt  &none
+        &none  &none  &none  &none  &none  &none       &en_eq     &en_plus  &en_minus  &en_ast   &en_pct   &en_dollar
+        &none  &none  &none  &none  &none  &none       &en_tilde  &en_lpar  &en_rpar   &en_lbrc  &en_rbrc  &none
         &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
         &kp LEFT_CONTROL  &kp LEFT_ALT  &none          &mkp MB3  &mkp MB1                &mkp MB2
         &mt T_LL          &mt T_LR      &bootloader    &none     &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
