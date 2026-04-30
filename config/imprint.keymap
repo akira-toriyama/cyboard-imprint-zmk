@@ -398,6 +398,19 @@
     _h: _h {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
+      bindings = <&__h>, <&_h_ctrl>;
+      mods = <( MOD_LCTL|MOD_RCTL )>;
+    };
+    _h_ctrl: _h_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp BACKSPACE>, <&kp LC(H)>;
+      mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+      keep-mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+    };
+    __h: __h {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
       bindings = <&kp H>, <&eiji_macro H>;
       mods = <( MOD_LSFT )>;
       keep-mods = <( MOD_LSFT )>;
