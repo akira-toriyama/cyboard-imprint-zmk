@@ -747,11 +747,11 @@
     _up: _up {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
-      bindings = <&__up UP_ARROW_LAYER UP_ARROW>, <&__up UP_ARROW_LAYER UP_ARROW>;
+      bindings = <&_up_ht UP_ARROW_LAYER UP_ARROW>, <&_up_ht UP_ARROW_LAYER UP_ARROW>;
       mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
       keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
     };
-    __up: __up {
+    _up_ht: _up_ht {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       flavor = "tap-unless-interrupted";
@@ -762,11 +762,11 @@
     _left: _left {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
-      bindings = <&__left LEFT_ARROW_LAYER LEFT_ARROW>, <&__left LEFT_ARROW_LAYER LEFT_ARROW>;
+      bindings = <&_left_ht LEFT_ARROW_LAYER LEFT_ARROW>, <&_left_ht LEFT_ARROW_LAYER LEFT_ARROW>;
       mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
       keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
     };
-    __left: __left {
+    _left_ht: _left_ht {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       flavor = "tap-unless-interrupted";
@@ -777,11 +777,11 @@
     _right: _right {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
-      bindings = <&__right RIGHT_ARROW_LAYER RIGHT_ARROW>, <&__right RIGHT_ARROW_LAYER RIGHT_ARROW>;
+      bindings = <&_right_ht RIGHT_ARROW_LAYER RIGHT_ARROW>, <&_right_ht RIGHT_ARROW_LAYER RIGHT_ARROW>;
       mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
       keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
     };
-    __right: __right {
+    _right_ht: _right_ht {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       flavor = "tap-unless-interrupted";
@@ -792,11 +792,11 @@
     _down: _down {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
-      bindings = <&__down DOWN_ARROW_LAYER DOWN_ARROW>, <&__down DOWN_ARROW_LAYER DOWN_ARROW>;
+      bindings = <&_down_ht DOWN_ARROW_LAYER DOWN_ARROW>, <&_down_ht DOWN_ARROW_LAYER DOWN_ARROW>;
       mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
       keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
     };
-    __down: __down {
+    _down_ht: _down_ht {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       flavor = "tap-unless-interrupted";
@@ -807,11 +807,11 @@
     _tab: _tab {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
-      bindings = <&__tab TAB_LAYER TAB>, <&kp TAB>;
+      bindings = <&_tab_ht TAB_LAYER TAB>, <&kp TAB>;
       mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
       keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
     };
-    __tab: __tab {
+    _tab_ht: _tab_ht {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       flavor = "tap-unless-interrupted";
@@ -822,11 +822,11 @@
     _delete: _delete {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
-      bindings = <&__delete DELETE_LAYER DELETE>, <&kp DELETE>;
+      bindings = <&_delete_ht DELETE_LAYER DELETE>, <&kp DELETE>;
       mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
       keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
     };
-    __delete: __delete {
+    _delete_ht: _delete_ht {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       flavor = "tap-unless-interrupted";
