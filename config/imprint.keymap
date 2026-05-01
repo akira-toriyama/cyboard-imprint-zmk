@@ -321,6 +321,14 @@
       #binding-cells = <0>;
       bindings = <&kp EIJI>;
     };
+
+    // ctrl+h で Backspace を送出する用。LCTRL を明示 release してから BACKSPACE、
+    // 親指キーが離されるまで保つため最後に LCTRL を press し直す。
+    ctrl_h_to_backspace: ctrl_h_to_backspace {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp BACKSPACE>, <&macro_press &kp LCTRL>;
+    };
   };
   behaviors {
     ime_kana: ime_kana {
@@ -396,6 +404,19 @@
       keep-mods = <( MOD_LSFT )>;
     };
     _h: _h {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&_h_shift>, <&_h_ctrl>;
+      mods = <( MOD_LCTL|MOD_RCTL )>;
+    };
+    _h_ctrl: _h_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&ctrl_h_to_backspace>, <&kp LC(H)>;
+      mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+      keep-mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+    };
+    _h_shift: _h_shift {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp H>, <&eiji_macro H>;
