@@ -450,7 +450,7 @@
       #binding-cells = <0>;
       bindings = <&macro_tap &kp EIJI>, <&macro_press &kp SLASH>, <&macro_pause_for_release>, <&macro_release &kp SLASH>;
     };
-    en_bsl: en_bsl { // \
+    en_bsl: en_bsl { // backslash
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&macro_tap &kp EIJI>, <&macro_press &kp BACKSLASH>, <&macro_pause_for_release>, <&macro_release &kp BACKSLASH>;
