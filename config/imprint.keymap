@@ -329,6 +329,46 @@
       #binding-cells = <0>;
       bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp BACKSPACE>, <&macro_press &kp LCTRL>;
     };
+    ctrl_a_to_home: ctrl_a_to_home {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp HOME>, <&macro_press &kp LCTRL>;
+    };
+    ctrl_b_to_left: ctrl_b_to_left {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp LEFT_ARROW>, <&macro_press &kp LCTRL>;
+    };
+    ctrl_d_to_delete: ctrl_d_to_delete {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp DELETE>, <&macro_press &kp LCTRL>;
+    };
+    ctrl_e_to_end: ctrl_e_to_end {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp END>, <&macro_press &kp LCTRL>;
+    };
+    ctrl_f_to_right: ctrl_f_to_right {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp RIGHT_ARROW>, <&macro_press &kp LCTRL>;
+    };
+    ctrl_j_to_return: ctrl_j_to_return {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp RETURN>, <&macro_press &kp LCTRL>;
+    };
+    ctrl_n_to_down: ctrl_n_to_down {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp DOWN_ARROW>, <&macro_press &kp LCTRL>;
+    };
+    ctrl_p_to_up: ctrl_p_to_up {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp UP_ARROW>, <&macro_press &kp LCTRL>;
+    };
   };
   behaviors {
     ime_kana: ime_kana {
@@ -357,11 +397,37 @@
     _a: _a {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
+      bindings = <&_a_shift>, <&_a_ctrl>;
+      mods = <( MOD_LCTL|MOD_RCTL )>;
+    };
+    _a_ctrl: _a_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&ctrl_a_to_home>, <&kp LC(A)>;
+      mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+      keep-mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+    };
+    _a_shift: _a_shift {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
       bindings = <&kp A>, <&eiji_macro A>;
       mods = <( MOD_LSFT )>;
       keep-mods = <( MOD_LSFT )>;
     };
     _b: _b {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&_b_shift>, <&_b_ctrl>;
+      mods = <( MOD_LCTL|MOD_RCTL )>;
+    };
+    _b_ctrl: _b_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&ctrl_b_to_left>, <&kp LC(B)>;
+      mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+      keep-mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+    };
+    _b_shift: _b_shift {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp B>, <&eiji_macro B>;
@@ -378,6 +444,19 @@
     _d: _d {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
+      bindings = <&_d_shift>, <&_d_ctrl>;
+      mods = <( MOD_LCTL|MOD_RCTL )>;
+    };
+    _d_ctrl: _d_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&ctrl_d_to_delete>, <&kp LC(D)>;
+      mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+      keep-mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+    };
+    _d_shift: _d_shift {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
       bindings = <&kp D>, <&eiji_macro D>;
       mods = <( MOD_LSFT )>;
       keep-mods = <( MOD_LSFT )>;
@@ -385,11 +464,37 @@
     _e: _e {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
+      bindings = <&_e_shift>, <&_e_ctrl>;
+      mods = <( MOD_LCTL|MOD_RCTL )>;
+    };
+    _e_ctrl: _e_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&ctrl_e_to_end>, <&kp LC(E)>;
+      mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+      keep-mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+    };
+    _e_shift: _e_shift {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
       bindings = <&kp E>, <&eiji_macro E>;
       mods = <( MOD_LSFT )>;
       keep-mods = <( MOD_LSFT )>;
     };
     _f: _f {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&_f_shift>, <&_f_ctrl>;
+      mods = <( MOD_LCTL|MOD_RCTL )>;
+    };
+    _f_ctrl: _f_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&ctrl_f_to_right>, <&kp LC(F)>;
+      mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+      keep-mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+    };
+    _f_shift: _f_shift {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp F>, <&eiji_macro F>;
@@ -433,6 +538,19 @@
     _j: _j {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
+      bindings = <&_j_shift>, <&_j_ctrl>;
+      mods = <( MOD_LCTL|MOD_RCTL )>;
+    };
+    _j_ctrl: _j_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&ctrl_j_to_return>, <&kp LC(J)>;
+      mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+      keep-mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+    };
+    _j_shift: _j_shift {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
       bindings = <&kp J>, <&eiji_macro J>;
       mods = <( MOD_LSFT )>;
       keep-mods = <( MOD_LSFT )>;
@@ -461,6 +579,19 @@
     _n: _n {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
+      bindings = <&_n_shift>, <&_n_ctrl>;
+      mods = <( MOD_LCTL|MOD_RCTL )>;
+    };
+    _n_ctrl: _n_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&ctrl_n_to_down>, <&kp LC(N)>;
+      mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+      keep-mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+    };
+    _n_shift: _n_shift {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
       bindings = <&kp N>, <&eiji_macro N>;
       mods = <( MOD_LSFT )>;
       keep-mods = <( MOD_LSFT )>;
@@ -473,6 +604,19 @@
       keep-mods = <( MOD_LSFT )>;
     };
     _p: _p {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&_p_shift>, <&_p_ctrl>;
+      mods = <( MOD_LCTL|MOD_RCTL )>;
+    };
+    _p_ctrl: _p_ctrl {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&ctrl_p_to_up>, <&kp LC(P)>;
+      mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+      keep-mods = <( MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LGUI|MOD_RGUI )>;
+    };
+    _p_shift: _p_shift {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp P>, <&eiji_macro P>;
