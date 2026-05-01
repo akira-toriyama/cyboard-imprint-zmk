@@ -327,47 +327,47 @@
     ctrl_h_to_backspace: ctrl_h_to_backspace {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp BACKSPACE>, <&macro_press &kp LCTRL>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_press &kp BACKSPACE>, <&macro_pause_for_release>, <&macro_release &kp BACKSPACE>, <&macro_press &kp LCTRL>;
     };
     ctrl_a_to_home: ctrl_a_to_home {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp HOME>, <&macro_press &kp LCTRL>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_press &kp HOME>, <&macro_pause_for_release>, <&macro_release &kp HOME>, <&macro_press &kp LCTRL>;
     };
     ctrl_b_to_left: ctrl_b_to_left {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp LEFT_ARROW>, <&macro_press &kp LCTRL>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_press &kp LEFT_ARROW>, <&macro_pause_for_release>, <&macro_release &kp LEFT_ARROW>, <&macro_press &kp LCTRL>;
     };
     ctrl_d_to_delete: ctrl_d_to_delete {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp DELETE>, <&macro_press &kp LCTRL>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_press &kp DELETE>, <&macro_pause_for_release>, <&macro_release &kp DELETE>, <&macro_press &kp LCTRL>;
     };
     ctrl_e_to_end: ctrl_e_to_end {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp END>, <&macro_press &kp LCTRL>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_press &kp END>, <&macro_pause_for_release>, <&macro_release &kp END>, <&macro_press &kp LCTRL>;
     };
     ctrl_f_to_right: ctrl_f_to_right {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp RIGHT_ARROW>, <&macro_press &kp LCTRL>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_press &kp RIGHT_ARROW>, <&macro_pause_for_release>, <&macro_release &kp RIGHT_ARROW>, <&macro_press &kp LCTRL>;
     };
     ctrl_j_to_return: ctrl_j_to_return {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp RETURN>, <&macro_press &kp LCTRL>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_press &kp RETURN>, <&macro_pause_for_release>, <&macro_release &kp RETURN>, <&macro_press &kp LCTRL>;
     };
     ctrl_n_to_down: ctrl_n_to_down {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp DOWN_ARROW>, <&macro_press &kp LCTRL>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_press &kp DOWN_ARROW>, <&macro_pause_for_release>, <&macro_release &kp DOWN_ARROW>, <&macro_press &kp LCTRL>;
     };
     ctrl_p_to_up: ctrl_p_to_up {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_release &kp LCTRL>, <&macro_tap &kp UP_ARROW>, <&macro_press &kp LCTRL>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_press &kp UP_ARROW>, <&macro_pause_for_release>, <&macro_release &kp UP_ARROW>, <&macro_press &kp LCTRL>;
     };
   };
   behaviors {
