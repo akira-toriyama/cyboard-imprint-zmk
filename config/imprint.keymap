@@ -15,27 +15,27 @@
 
 // right hand trackball configuration
 &trackball_peripheral_listener {
-    scroller {
-        layers = <NUM_LAYER LL_LAYER>;
-        input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
-            <&zip_xy_scaler 3 64>,
-            // make this trackball output scrolling events by default instead of cursor movement,
-            <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
+  scroller {
+    layers = <NUM_LAYER LL_LAYER>;
+    input-processors =
+      // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+      <&zip_xy_scaler 3 64>,
+      // make this trackball output scrolling events by default instead of cursor movement,
+      <&zip_xy_to_scroll_mapper>,
+      // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
+      <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+  };
 };
 
-//left hand trackball configuration
+// left hand trackball configuration
 &trackball_central_listener {
-    input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
-        <&zip_xy_scaler 3 64>,
-        // make this trackball output scrolling events by default instead of cursor movement,
-        <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
-        <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+  input-processors =
+    // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+    <&zip_xy_scaler 3 64>,
+    // make this trackball output scrolling events by default instead of cursor movement,
+    <&zip_xy_to_scroll_mapper>,
+    // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
+    <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
 
 / {
@@ -55,7 +55,6 @@
     };
   };
   macros {
-
     // レイヤー移動で効果音を鳴らす
     to_default_layer_macro: to_default_layer_macro {
       compatible = "zmk,behavior-macro-one-param";
