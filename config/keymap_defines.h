@@ -285,3 +285,49 @@
 #define X_DOWN_ARROW_C X_DOWN_ARROW(X_BASE_C)
 #define X_DOWN_ARROW_V X_DOWN_ARROW(X_BASE_V)
 #define X_DOWN_ARROW_B X_DOWN_ARROW(X_BASE_B)
+
+// --------------------------------------------------------------------
+// 共通マクロ
+// --------------------------------------------------------------------
+
+// NUM/SYM1/SYM2/FN レイヤー末尾 2 行（DEFAULT 以外で共通）
+#define LAYER_THUMB_COMMON \
+        &kp LEFT_CONTROL  &kp LEFT_ALT  &none          &mkp MB3  &mkp MB1                &mkp MB2 \
+        &mt T_LL          &mt T_LR      &bootloader    &none     &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
+
+// LL/TAB/DELETE/<arrow> レイヤー全体を 1 行で生成。
+// LAYER  : レイヤー名 (例: LL_LAYER)
+// P      : キー接頭辞 (例: X_LL → X_LL_QQ などに展開)
+// R4R    : row4 右側 5 セル分（例: &none &none &none &none &none）
+#define MORPH_LAYER(LAYER, P, R4R) \
+    LAYER { \
+      bindings = < \
+        &kp P##_QQ  &kp P##_Q  &kp P##_W  &kp P##_E  &kp P##_R  &kp P##_T    &none  &none  &none  &none  &none  &none \
+        &kp P##_AA  &kp P##_A  &kp P##_S  &kp P##_D  &kp P##_F  &kp P##_G    &none  &none  &none  &none  &none  &none \
+        &kp P##_ZZ  &kp P##_Z  &kp P##_X  &kp P##_C  &kp P##_V  &kp P##_B    &none  &none  &none  &none  &none  &none \
+        &none  &none  &kp P##_SYM2  &kp P##_SYM1  &kp P##_NUM                R4R \
+        &none         &none         &none                                    &none  &none  &none \
+        &kp P##_T_LL  &kp P##_T_LR  &none                                    &none  &none  &none \
+      >; \
+    };
+
+// 矢印 mod-morph + 対応 hold-tap の 1 ペアを生成。
+// name : ベース名 (例: _up → _up と _up_ht を生成)
+// LAYER, KEY : tap 時に潜るレイヤーと出力キー
+// P1, P2     : hold-trigger-key-positions に追加する 2 つの矢印キー位置
+#define ARROW_BEHAVIOR(name, LAYER, KEY, P1, P2) \
+    name##_ht: name##_ht { \
+      compatible = "zmk,behavior-hold-tap"; \
+      #binding-cells = <2>; \
+      flavor = "tap-unless-interrupted"; \
+      tapping-term-ms = <800>; \
+      bindings = <&mo>, <&kp>; \
+      hold-trigger-key-positions = <KEY_POSITION_LEFT_SIDE KEY_POSITION_L_THUMB P1 P2>; \
+    }; \
+    name: name { \
+      compatible = "zmk,behavior-mod-morph"; \
+      #binding-cells = <0>; \
+      bindings = <&name##_ht LAYER KEY>, <&name##_ht LAYER KEY>; \
+      mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>; \
+      keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>; \
+    };

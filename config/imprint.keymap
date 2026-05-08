@@ -44,41 +44,10 @@
   };
   combos {
     compatible = "zmk,combos";
-
-    combo_kana {
-      key-positions = <KEY_POSITION_LL KEY_POSITION_LR>;
-      bindings = <&ime_kana LS(LEFT_COMMAND) KANA>;
-    };
-    combo_eiji {
-      key-positions = <KEY_POSITION_RL KEY_POSITION_RR>;
-      bindings = <&ime_eiji LC(LALT) EIJI>;
-    };
+    #include "combos.dtsi"
   };
   macros {
-    // レイヤー移動で効果音を鳴らす
-    to_default_layer_macro: to_default_layer_macro {
-      compatible = "zmk,behavior-macro-one-param";
-      #binding-cells = <1>;
-      bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER>, <&macro_tap &kp X_SOUND_2>, <&macro_tap &to DEFAULT_LAYER>;
-    };
-
-    // 英語入力に切り替える
-    eiji_macro: eiji_macro {
-      compatible = "zmk,behavior-macro-one-param";
-      #binding-cells = <1>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_param_1to1>, <&macro_press &kp MACRO_PLACEHOLDER>, <&macro_pause_for_release>, <&macro_param_1to1>, <&macro_release &kp MACRO_PLACEHOLDER>;
-    };
-    kana: kana {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&kp KANA>;
-    };
-    eiji: eiji {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&kp EIJI>;
-    };
-    #include "eiji_macros.dtsi"
+    #include "macros.dtsi"
   };
   behaviors {
     ime_kana: ime_kana {
@@ -105,66 +74,7 @@
       bindings = <&kp>, <&kp>;
     };
     #include "letter_morphs.dtsi"
-    _up: _up {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&_up_ht UP_ARROW_LAYER UP_ARROW>, <&_up_ht UP_ARROW_LAYER UP_ARROW>;
-      mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-      keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-    };
-    _up_ht: _up_ht {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "tap-unless-interrupted";
-      tapping-term-ms = <800>;
-      bindings = <&mo>, <&kp>;
-      hold-trigger-key-positions = <KEY_POSITION_LEFT_SIDE KEY_POSITION_L_THUMB KEY_POSITION_LEFT_ARROW KEY_POSITION_RIGHT_ARROW>;
-    };
-    _left: _left {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&_left_ht LEFT_ARROW_LAYER LEFT_ARROW>, <&_left_ht LEFT_ARROW_LAYER LEFT_ARROW>;
-      mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-      keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-    };
-    _left_ht: _left_ht {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "tap-unless-interrupted";
-      tapping-term-ms = <800>;
-      bindings = <&mo>, <&kp>;
-      hold-trigger-key-positions = <KEY_POSITION_LEFT_SIDE KEY_POSITION_L_THUMB KEY_POSITION_DOWN_ARROW KEY_POSITION_RIGHT_ARROW>;
-    };
-    _right: _right {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&_right_ht RIGHT_ARROW_LAYER RIGHT_ARROW>, <&_right_ht RIGHT_ARROW_LAYER RIGHT_ARROW>;
-      mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-      keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-    };
-    _right_ht: _right_ht {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "tap-unless-interrupted";
-      tapping-term-ms = <800>;
-      bindings = <&mo>, <&kp>;
-      hold-trigger-key-positions = <KEY_POSITION_LEFT_SIDE KEY_POSITION_L_THUMB KEY_POSITION_DOWN_ARROW KEY_POSITION_LEFT_ARROW>;
-    };
-    _down: _down {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&_down_ht DOWN_ARROW_LAYER DOWN_ARROW>, <&_down_ht DOWN_ARROW_LAYER DOWN_ARROW>;
-      mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-      keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-    };
-    _down_ht: _down_ht {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "tap-unless-interrupted";
-      tapping-term-ms = <800>;
-      bindings = <&mo>, <&kp>;
-      hold-trigger-key-positions = <KEY_POSITION_LEFT_SIDE KEY_POSITION_L_THUMB KEY_POSITION_LEFT_ARROW KEY_POSITION_RIGHT_ARROW>;
-    };
+    #include "arrow_behaviors.dtsi"
     _tab: _tab {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
@@ -217,12 +127,12 @@
 
     DEFAULT_LAYER {
       bindings = <
-        &kp X_QQ    &_q  &_w  &_e  &_r  &_t                                                                                              &_y  &_u  &_i   &_o    &_p                   &kp X_PP
-        &kp SPACE   &_a  &_s  &_d  &_f  &_g                                                                                              &_h  &_j  &_k   &_l    &lt LL_LAYER X_LL_LL  &kp BACKSPACE
-        &kp ESCAPE  &_z  &_x  &_c  &_v  &_b                                                                                              &_n  &_m  &_up  &_tab  &_delete              &kp RETURN
-        &none  &_layer FN_LAYER X_LH_FN  &_layer SYMBOL2_LAYER X_LH_SYM2  &_layer SYMBOL1_LAYER X_LH_SYM1  &_layer NUM_LAYER X_LH_NUM    &_left  &_down  &_right  &none  &none
-        &kp LEFT_CONTROL  &kp LEFT_ALT  &none                                                                                            &mkp MB3       &mkp MB1            &mkp MB2
-        &mt T_LL          &mt T_LR      &bootloader                                                                                      &mo NUM_LAYER  &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
+        &kp X_QQ    &_q  &_w  &_e  &_r  &_t                                                                                                            &_y            &_u           &_i      &_o    &_p                   &kp X_PP
+        &kp SPACE   &_a  &_s  &_d  &_f  &_g                                                                                                            &_h            &_j           &_k      &_l    &lt LL_LAYER X_LL_LL  &kp BACKSPACE
+        &kp ESCAPE  &_z  &_x  &_c  &_v  &_b                                                                                                            &_n            &_m           &_up     &_tab  &_delete              &kp RETURN
+        &none  &_layer FN_LAYER X_LH_FN  &_layer SYMBOL2_LAYER X_LH_SYM2  &_layer SYMBOL1_LAYER X_LH_SYM1  &_layer NUM_LAYER X_LH_NUM                  &_left         &_down        &_right  &none  &none
+        &kp LEFT_CONTROL  &kp LEFT_ALT  &none                                                                                                          &mkp MB3       &mkp MB1                &mkp MB2
+        &mt T_LL          &mt T_LR      &bootloader                                                                                                    &mo NUM_LAYER  &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
       >;
     };
     NUM_LAYER {
@@ -231,8 +141,7 @@
         &none  &none  &none  &none  &none  &none       &none  &en4  &en5  &en6  &none  &none
         &none  &none  &none  &none  &none  &none       &en0   &en1  &en2  &en3  &none  &none
         &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
-        &kp LEFT_CONTROL  &kp LEFT_ALT  &none          &mkp MB3  &mkp MB1            &mkp MB2
-        &mt T_LL          &mt T_LR      &bootloader    &none     &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
+        LAYER_THUMB_COMMON
       >;
     };
     SYMBOL1_LAYER {
@@ -241,8 +150,7 @@
         &none  &none  &none  &none  &none  &none       &en_hash   &en_comma  &en_dot    &en_semi   &en_colon  &en_at
         &none  &none  &none  &none  &none  &none       &en_dq     &en_sq     &en_grave  &en_slash  &en_bsl    &none
         &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
-        &kp LEFT_CONTROL  &kp LEFT_ALT  &none          &mkp MB3  &mkp MB1            &mkp MB2
-        &mt T_LL          &mt T_LR      &bootloader    &none     &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
+        LAYER_THUMB_COMMON
       >;
     };
     SYMBOL2_LAYER {
@@ -251,8 +159,7 @@
         &none  &none  &none  &none  &none  &none       &en_eq     &en_plus  &en_minus  &en_ast   &en_pct   &en_dollar
         &none  &none  &none  &none  &none  &none       &en_tilde  &en_lpar  &en_rpar   &en_lbrc  &en_rbrc  &none
         &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
-        &kp LEFT_CONTROL  &kp LEFT_ALT  &none          &mkp MB3  &mkp MB1            &mkp MB2
-        &mt T_LL          &mt T_LR      &bootloader    &none     &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
+        LAYER_THUMB_COMMON
       >;
     };
     FN_LAYER {
@@ -261,79 +168,15 @@
         &none  &none  &none  &none  &none  &none       &none  &kp F5  &kp F6   &kp F7   &kp F8   &none
         &none  &none  &none  &none  &none  &none       &none  &kp F9  &kp F10  &kp F11  &kp F12  &none
         &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
-        &kp LEFT_CONTROL  &kp LEFT_ALT  &none          &mkp MB3  &mkp MB1            &mkp MB2
-        &mt T_LL          &mt T_LR      &bootloader    &none     &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
+        LAYER_THUMB_COMMON
       >;
     };
-    LL_LAYER {
-      bindings = <
-        &kp X_LL_QQ  &kp X_LL_Q  &kp X_LL_W  &kp X_LL_E  &kp X_LL_R  &kp X_LL_T    &none  &none  &none  &none  &none  &none
-        &kp X_LL_AA  &kp X_LL_A  &kp X_LL_S  &kp X_LL_D  &kp X_LL_F  &kp X_LL_G    &none  &none  &none  &none  &none  &none
-        &kp X_LL_ZZ  &kp X_LL_Z  &kp X_LL_X  &kp X_LL_C  &kp X_LL_V  &kp X_LL_B    &none  &none  &none  &none  &none  &none
-        &none  &none  &kp X_LL_SYM2  &kp X_LL_SYM1  &kp X_LL_NUM                   &none  &none  &none  &none  &none
-        &none          &none          &none                                        &none  &none  &none
-        &kp X_LL_T_LL  &kp X_LL_T_LR  &none                                        &none  &none  &none
-      >;
-    };
-    TAB_LAYER {
-      bindings = <
-        &kp X_TAB_QQ  &kp X_TAB_Q  &kp X_TAB_W  &kp X_TAB_E  &kp X_TAB_R  &kp X_TAB_T    &none  &none  &none  &none  &none  &none
-        &kp X_TAB_AA  &kp X_TAB_A  &kp X_TAB_S  &kp X_TAB_D  &kp X_TAB_F  &kp X_TAB_G    &none  &none  &none  &none  &none  &none
-        &kp X_TAB_ZZ  &kp X_TAB_Z  &kp X_TAB_X  &kp X_TAB_C  &kp X_TAB_V  &kp X_TAB_B    &none  &none  &none  &none  &none  &none
-        &none  &none  &kp X_TAB_SYM2  &kp X_TAB_SYM1  &kp X_TAB_NUM                      &none  &none  &none  &none  &none
-        &none           &none           &none                                            &none  &none  &none
-        &kp X_TAB_T_LL  &kp X_TAB_T_LR  &none                                            &none  &none  &none
-      >;
-    };
-    DELETE_LAYER {
-      bindings = <
-        &kp X_DELETE_QQ  &kp X_DELETE_Q  &kp X_DELETE_W  &kp X_DELETE_E  &kp X_DELETE_R  &kp X_DELETE_T    &none  &none  &none  &none  &none  &none
-        &kp X_DELETE_AA  &kp X_DELETE_A  &kp X_DELETE_S  &kp X_DELETE_D  &kp X_DELETE_F  &kp X_DELETE_G    &none  &none  &none  &none  &none  &none
-        &kp X_DELETE_ZZ  &kp X_DELETE_Z  &kp X_DELETE_X  &kp X_DELETE_C  &kp X_DELETE_V  &kp X_DELETE_B    &none  &none  &none  &none  &none  &none
-        &none  &none  &kp X_DELETE_SYM2  &kp X_DELETE_SYM1  &kp X_DELETE_NUM                               &none  &none  &none  &none  &none
-        &none              &none              &none                                                        &none  &none  &none
-        &kp X_DELETE_T_LL  &kp X_DELETE_T_LR  &none                                                        &none  &none  &none
-      >;
-    };
-    LEFT_ARROW_LAYER {
-      bindings = <
-        &kp X_LEFT_ARROW_QQ  &kp X_LEFT_ARROW_Q  &kp X_LEFT_ARROW_W  &kp X_LEFT_ARROW_E  &kp X_LEFT_ARROW_R  &kp X_LEFT_ARROW_T    &none  &none  &none  &none  &none  &none
-        &kp X_LEFT_ARROW_AA  &kp X_LEFT_ARROW_A  &kp X_LEFT_ARROW_S  &kp X_LEFT_ARROW_D  &kp X_LEFT_ARROW_F  &kp X_LEFT_ARROW_G    &none  &none  &none  &none  &none  &none
-        &kp X_LEFT_ARROW_ZZ  &kp X_LEFT_ARROW_Z  &kp X_LEFT_ARROW_X  &kp X_LEFT_ARROW_C  &kp X_LEFT_ARROW_V  &kp X_LEFT_ARROW_B    &none  &none  &none  &none  &none  &none
-        &none  &none  &kp X_LEFT_ARROW_SYM2  &kp X_LEFT_ARROW_SYM1  &kp X_LEFT_ARROW_NUM                                           &none  &kp HOME  &msc SCRL_LEFT  &none  &none
-        &none                  &none                  &none                                                                        &none  &none  &none
-        &kp X_LEFT_ARROW_T_LL  &kp X_LEFT_ARROW_T_LR  &none                                                                        &none  &none  &none
-      >;
-    };
-    RIGHT_ARROW_LAYER {
-      bindings = <
-        &kp X_RIGHT_ARROW_QQ  &kp X_RIGHT_ARROW_Q  &kp X_RIGHT_ARROW_W  &kp X_RIGHT_ARROW_E  &kp X_RIGHT_ARROW_R  &kp X_RIGHT_ARROW_T    &none  &none  &none  &none  &none  &none
-        &kp X_RIGHT_ARROW_AA  &kp X_RIGHT_ARROW_A  &kp X_RIGHT_ARROW_S  &kp X_RIGHT_ARROW_D  &kp X_RIGHT_ARROW_F  &kp X_RIGHT_ARROW_G    &none  &none  &none  &none  &none  &none
-        &kp X_RIGHT_ARROW_ZZ  &kp X_RIGHT_ARROW_Z  &kp X_RIGHT_ARROW_X  &kp X_RIGHT_ARROW_C  &kp X_RIGHT_ARROW_V  &kp X_RIGHT_ARROW_B    &none  &none  &none  &none  &none  &none
-        &none  &none  &kp X_RIGHT_ARROW_SYM2  &kp X_RIGHT_ARROW_SYM1  &kp X_RIGHT_ARROW_NUM                                              &msc SCRL_RIGHT  &kp END  &none  &none  &none
-        &none                   &none                   &none                                                                            &none  &none  &none
-        &kp X_RIGHT_ARROW_T_LL  &kp X_RIGHT_ARROW_T_LR  &none                                                                            &none  &none  &none
-      >;
-    };
-    UP_ARROW_LAYER {
-      bindings = <
-        &kp X_UP_ARROW_QQ  &kp X_UP_ARROW_Q  &kp X_UP_ARROW_W  &kp X_UP_ARROW_E  &kp X_UP_ARROW_R  &kp X_UP_ARROW_T    &none  &none  &none  &none  &none  &none
-        &kp X_UP_ARROW_AA  &kp X_UP_ARROW_A  &kp X_UP_ARROW_S  &kp X_UP_ARROW_D  &kp X_UP_ARROW_F  &kp X_UP_ARROW_G    &none  &none  &none  &none  &none  &none
-        &kp X_UP_ARROW_ZZ  &kp X_UP_ARROW_Z  &kp X_UP_ARROW_X  &kp X_UP_ARROW_C  &kp X_UP_ARROW_V  &kp X_UP_ARROW_B    &none  &none  &none  &none  &none  &none
-        &none  &none  &kp X_UP_ARROW_SYM2  &kp X_UP_ARROW_SYM1  &kp X_UP_ARROW_NUM                                     &kp PAGE_UP  &none  &msc SCRL_UP  &none  &none
-        &none                &none                &none                                                                &none  &none  &none
-        &kp X_UP_ARROW_T_LL  &kp X_UP_ARROW_T_LR  &none                                                                &none  &none  &none
-      >;
-    };
-    DOWN_ARROW_LAYER {
-      bindings = <
-        &kp X_DOWN_ARROW_QQ  &kp X_DOWN_ARROW_Q  &kp X_DOWN_ARROW_W  &kp X_DOWN_ARROW_E  &kp X_DOWN_ARROW_R  &kp X_DOWN_ARROW_T    &none  &none  &none  &none  &none  &none
-        &kp X_DOWN_ARROW_AA  &kp X_DOWN_ARROW_A  &kp X_DOWN_ARROW_S  &kp X_DOWN_ARROW_D  &kp X_DOWN_ARROW_F  &kp X_DOWN_ARROW_G    &none  &none  &none  &none  &none  &none
-        &kp X_DOWN_ARROW_ZZ  &kp X_DOWN_ARROW_Z  &kp X_DOWN_ARROW_X  &kp X_DOWN_ARROW_C  &kp X_DOWN_ARROW_V  &kp X_DOWN_ARROW_B    &none  &none  &none  &none  &none  &none
-        &none  &none  &kp X_DOWN_ARROW_SYM2  &kp X_DOWN_ARROW_SYM1  &kp X_DOWN_ARROW_NUM                                           &kp PAGE_DOWN  &none  &msc SCRL_DOWN  &none  &none
-        &none                  &none                  &none                                                                        &none  &none  &none
-        &kp X_DOWN_ARROW_T_LL  &kp X_DOWN_ARROW_T_LR  &none                                                                        &none  &none  &none
-      >;
-    };
+    MORPH_LAYER(LL_LAYER,          X_LL,          &none  &none  &none  &none  &none)
+    MORPH_LAYER(TAB_LAYER,         X_TAB,         &none  &none  &none  &none  &none)
+    MORPH_LAYER(DELETE_LAYER,      X_DELETE,      &none  &none  &none  &none  &none)
+    MORPH_LAYER(LEFT_ARROW_LAYER,  X_LEFT_ARROW,  &none            &kp HOME  &msc SCRL_LEFT  &none  &none)
+    MORPH_LAYER(RIGHT_ARROW_LAYER, X_RIGHT_ARROW, &msc SCRL_RIGHT  &kp END   &none           &none  &none)
+    MORPH_LAYER(UP_ARROW_LAYER,    X_UP_ARROW,    &kp PAGE_UP      &none     &msc SCRL_UP    &none  &none)
+    MORPH_LAYER(DOWN_ARROW_LAYER,  X_DOWN_ARROW,  &kp PAGE_DOWN    &none     &msc SCRL_DOWN  &none  &none)
   };
 };
