@@ -52,18 +52,20 @@
 #define KEY_POSITION_LEFT_ARROW 41
 #define KEY_POSITION_DOWN_ARROW 42
 #define KEY_POSITION_RIGHT_ARROW 43
-#define KEY_POSITION_LEFT_SIDE 0  1  2  3  4  5 \
-12  13  14  15  16 17 \
-24  25  26  27  28 29 \
-36 37 38 39 40 \
-46 47 48 \
-52 53 54
-#define KEY_POSITION_RIGHT_SIDE 6 7  8  9 10 11  \
-18  19  20  21  22  23 \
-30  31  32  33 34 35\
-41 42 43 44 45 \
-49 50 51 \
-55 56 57
+#define KEY_POSITION_LEFT_SIDE \
+   0  1  2  3  4  5 \
+  12 13 14 15 16 17 \
+  24 25 26 27 28 29 \
+  36 37 38 39 40 \
+  46 47 48 \
+  52 53 54
+#define KEY_POSITION_RIGHT_SIDE \
+   6  7  8  9 10 11 \
+  18 19 20 21 22 23 \
+  30 31 32 33 34 35 \
+  41 42 43 44 45 \
+  49 50 51 \
+  55 56 57
 #define KEY_POSITION_L_THUMB KEY_POSITION_LL KEY_POSITION_LR
 
 // ------------------------------------
@@ -257,27 +259,27 @@
 
 // right hand trackball configuration
 &trackball_peripheral_listener {
-    scroller {
-        layers = <NUM_LAYER LL_LAYER>;
-        input-processors =
-            // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
-            <&zip_xy_scaler 3 64>,
-            // make this trackball output scrolling events by default instead of cursor movement,
-            <&zip_xy_to_scroll_mapper>,
-            // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
+  scroller {
+    layers = <NUM_LAYER LL_LAYER>;
+    input-processors =
+      // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+      <&zip_xy_scaler 3 64>,
+      // make this trackball output scrolling events by default instead of cursor movement,
+      <&zip_xy_to_scroll_mapper>,
+      // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
+      <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+  };
 };
 
-//left hand trackball configuration
+// left hand trackball configuration
 &trackball_central_listener {
-    input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
-        <&zip_xy_scaler 3 64>,
-        // make this trackball output scrolling events by default instead of cursor movement,
-        <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
-        <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+  input-processors =
+    // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+    <&zip_xy_scaler 3 64>,
+    // make this trackball output scrolling events by default instead of cursor movement,
+    <&zip_xy_to_scroll_mapper>,
+    // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
+    <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
 
 / {
@@ -297,7 +299,6 @@
     };
   };
   macros {
-
     // レイヤー移動で効果音を鳴らす
     to_default_layer_macro: to_default_layer_macro {
       compatible = "zmk,behavior-macro-one-param";
