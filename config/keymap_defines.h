@@ -331,3 +331,31 @@
       mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>; \
       keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>; \
     };
+
+// Ctrl+letter を別キーへ remap する 3 段ネスト mod-morph を生成。
+// Shift+Ctrl+letter はパススルー（OS に Shift+Ctrl+letter として届く）。
+// name    : 既存 letter morph 名 (例: _p) — letter_morphs.dtsi で定義済みのもの
+// letter  : Shift+Ctrl 時にパススルー出力するキー (例: P)
+// out_key : Ctrl 単体時に出力するキー (例: UP_ARROW)
+// 生成される behavior 名: name##_ctrl / name##_decide / name##_strip
+#define CTRL_LETTER_MORPH(name, letter, out_key) \
+    name##_ctrl: name##_ctrl { \
+      compatible = "zmk,behavior-mod-morph"; \
+      #binding-cells = <0>; \
+      bindings = <&name>, <&name##_decide>; \
+      mods = <(MOD_LCTL)>; \
+      keep-mods = <(MOD_LCTL)>; \
+    }; \
+    name##_decide: name##_decide { \
+      compatible = "zmk,behavior-mod-morph"; \
+      #binding-cells = <0>; \
+      bindings = <&name##_strip>, <&kp letter>; \
+      mods = <(MOD_LSFT)>; \
+      keep-mods = <(MOD_LSFT)>; \
+    }; \
+    name##_strip: name##_strip { \
+      compatible = "zmk,behavior-mod-morph"; \
+      #binding-cells = <0>; \
+      bindings = <&none>, <&kp out_key>; \
+      mods = <(MOD_LCTL)>; \
+    };
