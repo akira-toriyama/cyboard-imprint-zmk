@@ -2,14 +2,18 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: akira-toriyama
+      url-base: https://github.com/akira-toriyama
     - name: Cyboard-DigitalTailor
       url-base: https://github.com/Cyboard-DigitalTailor
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
+    # fork: macOS Mission Control 誤発火回避用に mod-morph patch を当てた branch
+    # see https://github.com/akira-toriyama/cyboard-imprint-zmk/issues/11
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: akira-toriyama
+      revision: patch/mod-morph-send-report
       import: app/west.yml
     - name: zmk-keyboards
       remote: Cyboard-DigitalTailor
