@@ -2,10 +2,8 @@
 // behaviors { } ブロック内に #include して使う
 // CTRL_LETTER_MORPH マクロは keymap_defines.h で定義
 
-    CTRL_LETTER_MORPH(_a, A, HOME)
     CTRL_LETTER_MORPH(_b, B, LEFT_ARROW)
     CTRL_LETTER_MORPH(_d, D, DELETE)
-    CTRL_LETTER_MORPH(_e, E, END)
     CTRL_LETTER_MORPH(_f, F, RIGHT_ARROW)
     CTRL_LETTER_MORPH(_h, H, BACKSPACE)
     CTRL_LETTER_MORPH(_j, J, RETURN)

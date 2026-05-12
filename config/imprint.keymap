@@ -128,8 +128,8 @@
 
     DEFAULT_LAYER {
       bindings = <
-        &kp X_QQ    &_q       &_w  &_e_ctrl  &_r       &_t                                                                                                            &_y       &_u       &_i   &_o    &_p_ctrl              &kp X_PP
-        &kp SPACE   &_a_ctrl  &_s  &_d_ctrl  &_f_ctrl  &_g                                                                                                            &_h_ctrl  &_j_ctrl  &_k   &_l    &lt LL_LAYER X_LL_LL  &kp BACKSPACE
+        &kp X_QQ    &_q       &_w  &_e       &_r       &_t                                                                                                            &_y       &_u       &_i   &_o    &_p_ctrl              &kp X_PP
+        &kp SPACE   &_a       &_s  &_d_ctrl  &_f_ctrl  &_g                                                                                                            &_h_ctrl  &_j_ctrl  &_k   &_l    &lt LL_LAYER X_LL_LL  &kp BACKSPACE
         &kp ESCAPE  &_z       &_x  &_c       &_v       &_b_ctrl                                                                                                       &_n_ctrl  &_m       &_up  &_tab  &_delete              &kp RETURN
         &none  &_layer FN_LAYER X_LH_FN  &_layer SYMBOL2_LAYER X_LH_SYM2  &_layer SYMBOL1_LAYER X_LH_SYM1  &_layer NUM_LAYER X_LH_NUM                  &_left         &_down        &_right  &none  &none
         &kp LEFT_CONTROL  &kp LEFT_ALT  &none                                                                                                          &mkp MB3       &mkp MB1                &mkp MB2
