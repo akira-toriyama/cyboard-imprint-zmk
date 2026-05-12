@@ -3,22 +3,34 @@ parse_config:
   preprocess: true
   # `&kp X` 用に頻出キーの表示名を上書き
   zmk_keycode_map:
+    # 修飾子
     LEFT_SHIFT: ⇧
     RIGHT_SHIFT: ⇧
     LEFT_CONTROL: ⌃
     RIGHT_CONTROL: ⌃
     LEFT_ALT: ⌥
     RIGHT_ALT: ⌥
+    LALT: ⌥
+    RALT: ⌥
     LEFT_COMMAND: ⌘
     RIGHT_COMMAND: ⌘
     LEFT_GUI: ⌘
     RIGHT_GUI: ⌘
+    # 編集系（フル/短縮 alias 両方）
     RETURN: ⏎
+    RET: ⏎
+    ENTER: ⏎
     BACKSPACE: ⌫
+    BSPC: ⌫
     DELETE: ⌦
+    DEL: ⌦
     ESCAPE: ⎋
+    ESC: ⎋
     TAB: ⇥
     SPACE: ␣
+    INSERT: Ins
+    INS: Ins
+    # 矢印
     UP_ARROW: ↑
     DOWN_ARROW: ↓
     LEFT_ARROW: ←
@@ -27,11 +39,124 @@ parse_config:
     END: ⤓
     PAGE_UP: ⇞
     PAGE_DOWN: ⇟
-  # 自作の hold-tap / mod-morph を見やすくする
-  # tap: 短押し、hold: 長押し で出る binding
+    # NumPad 数字
+    KP_N0: '0'
+    KP_N1: '1'
+    KP_N2: '2'
+    KP_N3: '3'
+    KP_N4: '4'
+    KP_N5: '5'
+    KP_N6: '6'
+    KP_N7: '7'
+    KP_N8: '8'
+    KP_N9: '9'
+    KP_NUMBER_0: '0'
+    KP_NUMBER_1: '1'
+    KP_NUMBER_2: '2'
+    KP_NUMBER_3: '3'
+    KP_NUMBER_4: '4'
+    KP_NUMBER_5: '5'
+    KP_NUMBER_6: '6'
+    KP_NUMBER_7: '7'
+    KP_NUMBER_8: '8'
+    KP_NUMBER_9: '9'
+    # NumPad 記号
+    KP_PLUS: +
+    KP_MINUS: '-'
+    KP_ASTERISK: '*'
+    KP_SLASH: /
+    KP_DOT: .
+    KP_EQUAL: '='
+    KP_ENTER: ⏎
+    # システム/特殊
+    NON_US_BACKSLASH: \
+    NON_US_HASH: '#'
+    K_APPLICATION: ☰
+    APPLICATION: ☰
+    PRINTSCREEN: PrtSc
+    PAUSE_BREAK: Pause
+    # macOS 用 LANGUAGE_*（自作 OS 通知の意味で表示）
+    LANGUAGE_1: かな
+    LANGUAGE_2: 英数
+    LANGUAGE_3: ♪1
+    LANGUAGE_4: ♪2
+    LANGUAGE_5: →Num
+    LANGUAGE_6: →Sym1
+    LANGUAGE_7: →Sym2
+    LANGUAGE_8: →Fn
+    LANGUAGE_9: →PP
+    # INTERNATIONAL_*（LL レイヤーの OS 通知）
+    INTERNATIONAL_1: ll-A
+    INTERNATIONAL_2: ll-Z
+    INTERNATIONAL_3: ll-Q
+    INTERNATIONAL_4: ll-N
+    INTERNATIONAL_5: ll-S1
+    INTERNATIONAL_6: ll-S2
+    INTERNATIONAL_7: ll-TL
+    INTERNATIONAL_8: ll-TR
+  # 自作 macro / mod-morph の include 元
   zmk_additional_includes:
     - config
   zmk_combos: {}
+  # &mkp / &msc / &bootloader / &en* / &kana / &eiji 等、`&kp` 以外の binding をリネーム
+  raw_binding_map:
+    # ポインティング / システム
+    "&mkp MB1": 🖱L
+    "&mkp MB2": 🖱R
+    "&mkp MB3": 🖱M
+    "&msc SCRL_LEFT": ⟸
+    "&msc SCRL_RIGHT": ⟹
+    "&msc SCRL_UP": ⤊
+    "&msc SCRL_DOWN": ⤋
+    "&bootloader": ⚙ boot
+    # EIJI 切替 → 数字 (NUM_LAYER)
+    "&en0": '0'
+    "&en1": '1'
+    "&en2": '2'
+    "&en3": '3'
+    "&en4": '4'
+    "&en5": '5'
+    "&en6": '6'
+    "&en7": '7'
+    "&en8": '8'
+    "&en9": '9'
+    # EIJI 切替 → 記号 (SYMBOL1_LAYER)
+    "&en_under": _
+    "&en_pipe":  '|'
+    "&en_amp":   '&'
+    "&en_excl":  '!'
+    "&en_q":     '?'
+    "&en_hash":  '#'
+    "&en_comma": ','
+    "&en_dot":   .
+    "&en_semi":  ';'
+    "&en_colon": ':'
+    "&en_at":    '@'
+    "&en_dq":    '"'
+    "&en_sq":    "'"
+    "&en_grave": '`'
+    "&en_slash": /
+    "&en_bsl":   \
+    # EIJI 切替 → 記号 (SYMBOL2_LAYER)
+    "&en_caret":  ^
+    "&en_lt":     <
+    "&en_gt":     '>'
+    "&en_lbkt":   '['
+    "&en_rbkt":   ']'
+    "&en_eq":     '='
+    "&en_plus":   +
+    "&en_minus":  '-'
+    "&en_ast":    '*'
+    "&en_pct":    '%'
+    "&en_dollar": $
+    "&en_tilde":  '~'
+    "&en_lpar":   (
+    "&en_rpar":   )
+    "&en_lbrc":   '{'
+    "&en_rbrc":   '}'
+    # combo (ime_kana/ime_eiji の tap binding として呼ばれる)
+    "&kana": かな
+    "&eiji": 英数
 
 draw_config:
   # 親指クラスタが横長なので、列をきつく詰めない
@@ -39,8 +164,8 @@ draw_config:
   key_h: 56
   combo_w: 28
   combo_h: 22
-  # combo 図は別エリアで描画
-  separate_combo_diagrams: true
+  # combo 数が少ないので、別エリアでなく該当レイヤーへオーバーレイ
+  separate_combo_diagrams: false
   # hold-tap の頭に "▼" を付ける等、見やすさ向上
   arc_radius: 6
   # SVG 内のフォント
