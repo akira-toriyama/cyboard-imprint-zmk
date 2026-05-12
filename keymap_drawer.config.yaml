@@ -1,0 +1,48 @@
+parse_config:
+  # config/keymap_defines.h で定義した #define を展開させる
+  preprocess: true
+  # `&kp X` 用に頻出キーの表示名を上書き
+  zmk_keycode_map:
+    LEFT_SHIFT: ⇧
+    RIGHT_SHIFT: ⇧
+    LEFT_CONTROL: ⌃
+    RIGHT_CONTROL: ⌃
+    LEFT_ALT: ⌥
+    RIGHT_ALT: ⌥
+    LEFT_COMMAND: ⌘
+    RIGHT_COMMAND: ⌘
+    LEFT_GUI: ⌘
+    RIGHT_GUI: ⌘
+    RETURN: ⏎
+    BACKSPACE: ⌫
+    DELETE: ⌦
+    ESCAPE: ⎋
+    TAB: ⇥
+    SPACE: ␣
+    UP_ARROW: ↑
+    DOWN_ARROW: ↓
+    LEFT_ARROW: ←
+    RIGHT_ARROW: →
+    HOME: ⤒
+    END: ⤓
+    PAGE_UP: ⇞
+    PAGE_DOWN: ⇟
+  # 自作の hold-tap / mod-morph を見やすくする
+  # tap: 短押し、hold: 長押し で出る binding
+  zmk_additional_includes:
+    - config
+  zmk_combos: {}
+
+draw_config:
+  # 親指クラスタが横長なので、列をきつく詰めない
+  key_w: 56
+  key_h: 56
+  combo_w: 28
+  combo_h: 22
+  # combo 図は別エリアで描画
+  separate_combo_diagrams: true
+  # hold-tap の頭に "▼" を付ける等、見やすさ向上
+  arc_radius: 6
+  # SVG 内のフォント
+  svg_extra_style: |
+    text { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; }

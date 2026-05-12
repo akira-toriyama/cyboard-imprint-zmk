@@ -1,0 +1,715 @@
+layout: {zmk_keyboard: imprint, layout_name: imprint_letters_only_full_bottom_row}
+layers:
+  '0':
+  - Gui+AltGr+Sft+Ctl+LANGUAGE 8
+  - {t: Q, s: '&eiji_macro Q'}
+  - {t: W, s: '&eiji_macro W'}
+  - {t: E, s: '&eiji_macro E'}
+  - {t: R, s: '&eiji_macro R'}
+  - {t: T, s: '&eiji_macro T'}
+  - {t: Y, s: '&eiji_macro Y'}
+  - {t: U, s: '&eiji_macro U'}
+  - {t: I, s: '&eiji_macro I'}
+  - {t: O, s: '&eiji_macro O'}
+  - {t: P, s: '&eiji_macro P'}
+  - Gui+AltGr+Sft+Ctl+LANGUAGE 9
+  - ␣
+  - {t: A, s: '&eiji_macro A'}
+  - {t: S, s: '&eiji_macro S'}
+  - {t: D, s: '&eiji_macro D'}
+  - {t: F, s: '&eiji_macro F'}
+  - {t: G, s: '&eiji_macro G'}
+  - {t: H, s: '&eiji_macro H'}
+  - {t: J, s: '&eiji_macro J'}
+  - {t: K, s: '&eiji_macro K'}
+  - {t: L, s: '&eiji_macro L'}
+  - {t: KP 0, h: '5'}
+  - ⌫
+  - ⎋
+  - {t: Z, s: '&eiji_macro Z'}
+  - {t: X, s: '&eiji_macro X'}
+  - {t: C, s: '&eiji_macro C'}
+  - {t: V, s: '&eiji_macro V'}
+  - {t: B, s: '&eiji_macro B'}
+  - {t: N, s: '&eiji_macro N'}
+  - {t: M, s: '&eiji_macro M'}
+  - {t: ↑, h: '10', s: ↑}
+  - {t: ⇥, h: '6', s: ⇥}
+  - {t: ⌦, h: '7', s: ⌦}
+  - ⏎
+  - ''
+  - {t: Gui+AltGr+Sft+Ctl+LANGUAGE 8, h: '4'}
+  - {t: Gui+AltGr+Sft+Ctl+LANGUAGE 7, h: '3'}
+  - {t: Gui+AltGr+Sft+Ctl+LANGUAGE 6, h: '2'}
+  - {t: Gui+AltGr+Sft+Ctl+LANGUAGE 5, h: '1'}
+  - {t: ←, h: '8', s: ←}
+  - {t: ↓, h: '11', s: ↓}
+  - {t: →, h: '9', s: →}
+  - ''
+  - ''
+  - ⌃
+  - ⌥
+  - ''
+  - '&mkp MB3'
+  - '&mkp MB1'
+  - '&mkp MB2'
+  - {t: ⏎, h: ⇧}
+  - {t: ⌫, h: ⌘}
+  - '&bootloader'
+  - '1'
+  - {t: ESC, h: ⌥}
+  - {t: ␣, h: ⌃}
+  '1':
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&en7'
+  - '&en8'
+  - '&en9'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&en4'
+  - '&en5'
+  - '&en6'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&en0'
+  - '&en1'
+  - '&en2'
+  - '&en3'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ⌃
+  - ⌥
+  - ''
+  - '&mkp MB3'
+  - '&mkp MB1'
+  - '&mkp MB2'
+  - {t: ⏎, h: ⇧}
+  - {t: ⌫, h: ⌘}
+  - '&bootloader'
+  - ''
+  - {t: ESC, h: ⌥}
+  - {t: ␣, h: ⌃}
+  '2':
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&en_under'
+  - '&en_pipe'
+  - '&en_amp'
+  - '&en_excl'
+  - '&en_q'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&en_hash'
+  - '&en_comma'
+  - '&en_dot'
+  - '&en_semi'
+  - '&en_colon'
+  - '&en_at'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&en_dq'
+  - '&en_sq'
+  - '&en_grave'
+  - '&en_slash'
+  - '&en_bsl'
+  - ''
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ⌃
+  - ⌥
+  - ''
+  - '&mkp MB3'
+  - '&mkp MB1'
+  - '&mkp MB2'
+  - {t: ⏎, h: ⇧}
+  - {t: ⌫, h: ⌘}
+  - '&bootloader'
+  - ''
+  - {t: ESC, h: ⌥}
+  - {t: ␣, h: ⌃}
+  '3':
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&en_caret'
+  - '&en_lt'
+  - '&en_gt'
+  - '&en_lbkt'
+  - '&en_rbkt'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&en_eq'
+  - '&en_plus'
+  - '&en_minus'
+  - '&en_ast'
+  - '&en_pct'
+  - '&en_dollar'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&en_tilde'
+  - '&en_lpar'
+  - '&en_rpar'
+  - '&en_lbrc'
+  - '&en_rbrc'
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ⌃
+  - ⌥
+  - ''
+  - '&mkp MB3'
+  - '&mkp MB1'
+  - '&mkp MB2'
+  - {t: ⏎, h: ⇧}
+  - {t: ⌫, h: ⌘}
+  - '&bootloader'
+  - ''
+  - {t: ESC, h: ⌥}
+  - {t: ␣, h: ⌃}
+  '4':
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - F1
+  - F2
+  - F3
+  - F4
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - F5
+  - F6
+  - F7
+  - F8
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - F9
+  - F10
+  - F11
+  - F12
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ⌃
+  - ⌥
+  - ''
+  - '&mkp MB3'
+  - '&mkp MB1'
+  - '&mkp MB2'
+  - {t: ⏎, h: ⇧}
+  - {t: ⌫, h: ⌘}
+  - '&bootloader'
+  - ''
+  - {t: ESC, h: ⌥}
+  - {t: ␣, h: ⌃}
+  '5':
+  - INTERNATIONAL 3
+  - KP 1
+  - KP 2
+  - KP 3
+  - KP 4
+  - KP 5
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - INTERNATIONAL 1
+  - KP 6
+  - KP 7
+  - KP 8
+  - KP 9
+  - KP PLUS
+  - ''
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - INTERNATIONAL 2
+  - KP EQUAL
+  - KP DOT
+  - KP MINUS
+  - KP SLASH
+  - KP ASTERISK
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - INTERNATIONAL 6
+  - INTERNATIONAL 5
+  - INTERNATIONAL 4
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - INTERNATIONAL 7
+  - INTERNATIONAL 8
+  - ''
+  - ''
+  - ''
+  - ''
+  '6':
+  - Sft+AltGr+LANGUAGE 5
+  - Sft+AltGr+F13
+  - Sft+AltGr+F14
+  - Sft+AltGr+F15
+  - Sft+AltGr+F16
+  - Sft+AltGr+F17
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+AltGr+NON US BACKSLASH
+  - Sft+AltGr+F18
+  - Sft+AltGr+F19
+  - Sft+AltGr+F20
+  - Sft+AltGr+F21
+  - Sft+AltGr+F22
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+AltGr+APPLICATION
+  - Sft+AltGr+F23
+  - Sft+AltGr+F24
+  - Sft+AltGr+NON US HASH
+  - Sft+AltGr+PRINTSCREEN
+  - Sft+AltGr+PAUSE BREAK
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+AltGr+LANGUAGE 8
+  - Sft+AltGr+LANGUAGE 7
+  - Sft+AltGr+LANGUAGE 6
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+AltGr+INSERT
+  - Sft+AltGr+KP ENTER
+  - ''
+  - ''
+  - ''
+  - ''
+  '7':
+  - Sft+Gui+LANGUAGE 5
+  - Sft+Gui+F13
+  - Sft+Gui+F14
+  - Sft+Gui+F15
+  - Sft+Gui+F16
+  - Sft+Gui+F17
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+Gui+NON US BACKSLASH
+  - Sft+Gui+F18
+  - Sft+Gui+F19
+  - Sft+Gui+F20
+  - Sft+Gui+F21
+  - Sft+Gui+F22
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+Gui+APPLICATION
+  - Sft+Gui+F23
+  - Sft+Gui+F24
+  - Sft+Gui+NON US HASH
+  - Sft+Gui+PRINTSCREEN
+  - Sft+Gui+PAUSE BREAK
+  - ''
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - Sft+Gui+LANGUAGE 8
+  - Sft+Gui+LANGUAGE 7
+  - Sft+Gui+LANGUAGE 6
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+Gui+INSERT
+  - Sft+Gui+KP ENTER
+  - ''
+  - ''
+  - ''
+  - ''
+  '8':
+  - AltGr+Ctl+LANGUAGE 5
+  - AltGr+Ctl+F13
+  - AltGr+Ctl+F14
+  - AltGr+Ctl+F15
+  - AltGr+Ctl+F16
+  - AltGr+Ctl+F17
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - AltGr+Ctl+NON US BACKSLASH
+  - AltGr+Ctl+F18
+  - AltGr+Ctl+F19
+  - AltGr+Ctl+F20
+  - AltGr+Ctl+F21
+  - AltGr+Ctl+F22
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - AltGr+Ctl+APPLICATION
+  - AltGr+Ctl+F23
+  - AltGr+Ctl+F24
+  - AltGr+Ctl+NON US HASH
+  - AltGr+Ctl+PRINTSCREEN
+  - AltGr+Ctl+PAUSE BREAK
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - AltGr+Ctl+LANGUAGE 8
+  - AltGr+Ctl+LANGUAGE 7
+  - AltGr+Ctl+LANGUAGE 6
+  - {type: held}
+  - ⤒
+  - '&msc SCRL_LEFT'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - AltGr+Ctl+INSERT
+  - AltGr+Ctl+KP ENTER
+  - ''
+  - ''
+  - ''
+  - ''
+  '9':
+  - Gui+Ctl+LANGUAGE 5
+  - Gui+Ctl+F13
+  - Gui+Ctl+F14
+  - Gui+Ctl+F15
+  - Gui+Ctl+F16
+  - Gui+Ctl+F17
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Gui+Ctl+NON US BACKSLASH
+  - Gui+Ctl+F18
+  - Gui+Ctl+F19
+  - Gui+Ctl+F20
+  - Gui+Ctl+F21
+  - Gui+Ctl+F22
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Gui+Ctl+APPLICATION
+  - Gui+Ctl+F23
+  - Gui+Ctl+F24
+  - Gui+Ctl+NON US HASH
+  - Gui+Ctl+PRINTSCREEN
+  - Gui+Ctl+PAUSE BREAK
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Gui+Ctl+LANGUAGE 8
+  - Gui+Ctl+LANGUAGE 7
+  - Gui+Ctl+LANGUAGE 6
+  - '&msc SCRL_RIGHT'
+  - ⤓
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Gui+Ctl+INSERT
+  - Gui+Ctl+KP ENTER
+  - ''
+  - ''
+  - ''
+  - ''
+  '10':
+  - Sft+Ctl+LANGUAGE 5
+  - Sft+Ctl+F13
+  - Sft+Ctl+F14
+  - Sft+Ctl+F15
+  - Sft+Ctl+F16
+  - Sft+Ctl+F17
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+Ctl+NON US BACKSLASH
+  - Sft+Ctl+F18
+  - Sft+Ctl+F19
+  - Sft+Ctl+F20
+  - Sft+Ctl+F21
+  - Sft+Ctl+F22
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+Ctl+APPLICATION
+  - Sft+Ctl+F23
+  - Sft+Ctl+F24
+  - Sft+Ctl+NON US HASH
+  - Sft+Ctl+PRINTSCREEN
+  - Sft+Ctl+PAUSE BREAK
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+Ctl+LANGUAGE 8
+  - Sft+Ctl+LANGUAGE 7
+  - Sft+Ctl+LANGUAGE 6
+  - ⇞
+  - ''
+  - '&msc SCRL_UP'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Sft+Ctl+INSERT
+  - Sft+Ctl+KP ENTER
+  - ''
+  - ''
+  - ''
+  - ''
+  '11':
+  - Gui+AltGr+LANGUAGE 5
+  - Gui+AltGr+F13
+  - Gui+AltGr+F14
+  - Gui+AltGr+F15
+  - Gui+AltGr+F16
+  - Gui+AltGr+F17
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Gui+AltGr+NON US BACKSLASH
+  - Gui+AltGr+F18
+  - Gui+AltGr+F19
+  - Gui+AltGr+F20
+  - Gui+AltGr+F21
+  - Gui+AltGr+F22
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Gui+AltGr+APPLICATION
+  - Gui+AltGr+F23
+  - Gui+AltGr+F24
+  - Gui+AltGr+NON US HASH
+  - Gui+AltGr+PRINTSCREEN
+  - Gui+AltGr+PAUSE BREAK
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Gui+AltGr+LANGUAGE 8
+  - Gui+AltGr+LANGUAGE 7
+  - Gui+AltGr+LANGUAGE 6
+  - ⇟
+  - {type: held}
+  - '&msc SCRL_DOWN'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Gui+AltGr+INSERT
+  - Gui+AltGr+KP ENTER
+  - ''
+  - ''
+  - ''
+  - ''
+combos:
+- p: [52, 53]
+  k: {t: '&kana LANGUAGE_1', h: Sft+⌘}
+- p: [56, 57]
+  k: {t: '&eiji LANGUAGE_2', h: Ctl+LALT}
