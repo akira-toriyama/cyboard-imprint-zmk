@@ -226,12 +226,14 @@
     };
 
 // LL/TAB/DELETE/<arrow> レイヤー全体を 1 行で生成。
-// LAYER : レイヤー名 (例: LL_LAYER)
-// WRAP  : キー wrapper macro (例: X_LL / X_TAB / X_DOWN_ARROW)。WRAP(QQ) 等が
-//         実際のキーコードに展開される (X_LL は object 参照、X_TAB 等は修飾子付与)
-// R4R   : row4 右側 5 セル分（例: &none &none &none &none &none）
-#define MORPH_LAYER(LAYER, WRAP, R4R) \
+// LAYER   : レイヤー名 (例: LL_LAYER)
+// DISPLAY : keymap-drawer 用の表示名（例: "LL" / "⇥"）
+// WRAP    : キー wrapper macro (例: X_LL / X_TAB / X_DOWN_ARROW)。WRAP(QQ) 等が
+//           実際のキーコードに展開される (X_LL は object 参照、X_TAB 等は修飾子付与)
+// R4R     : row4 右側 5 セル分（例: &none &none &none &none &none）
+#define MORPH_LAYER(LAYER, DISPLAY, WRAP, R4R) \
     LAYER { \
+      display-name = DISPLAY; \
       bindings = < \
         &kp WRAP(QQ)  &kp WRAP(Q)  &kp WRAP(W)  &kp WRAP(E)  &kp WRAP(R)  &kp WRAP(T)    &none  &none  &none  &none  &none  &none \
         &kp WRAP(AA)  &kp WRAP(A)  &kp WRAP(S)  &kp WRAP(D)  &kp WRAP(F)  &kp WRAP(G)    &none  &none  &none  &none  &none  &none \
@@ -281,6 +283,7 @@
 // EIJI 切替 → 指定キー press → pause → release (long-press でリピート可能)。
 // name : 生成する behavior 名 (例: en0 / en_under)
 // key  : 出力キー (例: N0 / UNDERSCORE)
+// 注: keymap-drawer 上の表示は keymap_drawer.config.yaml の raw_binding_map で設定する。
 #define EN_MACRO(name, key) \
     name: name { \
       compatible = "zmk,behavior-macro"; \

@@ -44,16 +44,18 @@
     compatible = "zmk,keymap";
 
     DEFAULT_LAYER {
+      display-name = "Base";
       bindings = <
-        &kp X_QQ    &_q       &_w  &_e       &_r       &_t                                                                                                            &_y       &_u       &_i   &_o    &_p_ctrl              &kp X_PP
-        &kp SPACE   &_a       &_s  &_d_ctrl  &_f_ctrl  &_g                                                                                                            &_h_ctrl  &_j_ctrl  &_k   &_l    &lt LL_LAYER X_LL_LL  &kp BACKSPACE
-        &kp ESCAPE  &_z       &_x  &_c       &_v       &_b_ctrl                                                                                                       &_n_ctrl  &_m       &_up  &_tab  &_delete              &kp RETURN
-        &none  LH_LAYER(FN)  LH_LAYER(SYMBOL2)  LH_LAYER(SYMBOL1)  LH_LAYER(NUM)                                                                                  &_left         &_down        &_right  &none  &none
-        &kp LEFT_CONTROL  &kp LEFT_ALT  &none                                                                                                          &mkp MB3       &mkp MB1                &mkp MB2
-        &mt T_LL          &mt T_LR      &bootloader                                                                                                    &mo NUM_LAYER  &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
+        &kp X_QQ    &_q  &_w  &_e       &_r       &_t            &_y       &_u       &_i   &_o    &_p_ctrl              &kp X_PP
+        &kp SPACE   &_a  &_s  &_d_ctrl  &_f_ctrl  &_g            &_h_ctrl  &_j_ctrl  &_k   &_l    &lt LL_LAYER X_LL_LL  &kp BACKSPACE
+        &kp ESCAPE  &_z  &_x  &_c       &_v       &_b_ctrl       &_n_ctrl  &_m       &_up  &_tab  &_delete              &kp RETURN
+        &none  LH_LAYER(FN)  LH_LAYER(SYMBOL2)  LH_LAYER(SYMBOL1)  LH_LAYER(NUM)    &_left  &_down  &_right  &none         &none
+        &kp LEFT_CONTROL  &kp LEFT_ALT  &none            &mkp MB3       &mkp MB1                &mkp MB2
+        &mt T_LL          &mt T_LR      &bootloader      &mo NUM_LAYER  &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
       >;
     };
     NUM_LAYER {
+      display-name = "Num";
       bindings = <
         &none  &none  &none  &none  &none  &none       &none  &en7  &en8  &en9  &none  &none
         &none  &none  &none  &none  &none  &none       &none  &en4  &en5  &en6  &none  &none
@@ -63,6 +65,7 @@
       >;
     };
     SYMBOL1_LAYER {
+      display-name = "Sym1";
       bindings = <
         &none  &none  &none  &none  &none  &none       &en_under  &en_pipe   &en_amp    &en_excl   &en_q      &none
         &none  &none  &none  &none  &none  &none       &en_hash   &en_comma  &en_dot    &en_semi   &en_colon  &en_at
@@ -72,6 +75,7 @@
       >;
     };
     SYMBOL2_LAYER {
+      display-name = "Sym2";
       bindings = <
         &none  &none  &none  &none  &none  &none       &en_caret  &en_lt    &en_gt     &en_lbkt  &en_rbkt  &none
         &none  &none  &none  &none  &none  &none       &en_eq     &en_plus  &en_minus  &en_ast   &en_pct   &en_dollar
@@ -81,6 +85,7 @@
       >;
     };
     FN_LAYER {
+      display-name = "Fn";
       bindings = <
         &none  &none  &none  &none  &none  &none       &none  &kp F1  &kp F2   &kp F3   &kp F4   &none
         &none  &none  &none  &none  &none  &none       &none  &kp F5  &kp F6   &kp F7   &kp F8   &none
@@ -89,12 +94,12 @@
         LAYER_THUMB_COMMON
       >;
     };
-    MORPH_LAYER(LL_LAYER,          X_LL,          &none  &none  &none  &none  &none)
-    MORPH_LAYER(TAB_LAYER,         X_TAB,         &none  &none  &none  &none  &none)
-    MORPH_LAYER(DELETE_LAYER,      X_DELETE,      &none  &none  &none  &none  &none)
-    MORPH_LAYER(LEFT_ARROW_LAYER,  X_LEFT_ARROW,  &none            &kp HOME  &msc SCRL_LEFT  &none  &none)
-    MORPH_LAYER(RIGHT_ARROW_LAYER, X_RIGHT_ARROW, &msc SCRL_RIGHT  &kp END   &none           &none  &none)
-    MORPH_LAYER(UP_ARROW_LAYER,    X_UP_ARROW,    &kp PAGE_UP      &none     &msc SCRL_UP    &none  &none)
-    MORPH_LAYER(DOWN_ARROW_LAYER,  X_DOWN_ARROW,  &kp PAGE_DOWN    &none     &msc SCRL_DOWN  &none  &none)
+    MORPH_LAYER(LL_LAYER,          "LL", X_LL,          &none            &none     &none           &none  &none)
+    MORPH_LAYER(TAB_LAYER,         "⇥",  X_TAB,         &none            &none     &none           &none  &none)
+    MORPH_LAYER(DELETE_LAYER,      "⌦",  X_DELETE,      &none            &none     &none           &none  &none)
+    MORPH_LAYER(LEFT_ARROW_LAYER,  "←",  X_LEFT_ARROW,  &none            &kp HOME  &msc SCRL_LEFT  &none  &none)
+    MORPH_LAYER(RIGHT_ARROW_LAYER, "→",  X_RIGHT_ARROW, &msc SCRL_RIGHT  &kp END   &none           &none  &none)
+    MORPH_LAYER(UP_ARROW_LAYER,    "↑",  X_UP_ARROW,    &kp PAGE_UP      &none     &msc SCRL_UP    &none  &none)
+    MORPH_LAYER(DOWN_ARROW_LAYER,  "↓",  X_DOWN_ARROW,  &kp PAGE_DOWN    &none     &msc SCRL_DOWN  &none  &none)
   };
 };
