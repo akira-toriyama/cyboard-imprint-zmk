@@ -66,13 +66,17 @@
   55 56 57
 #define KEY_POSITION_L_THUMB KEY_POSITION_LL KEY_POSITION_LR
 
+// 現行 matrix transform (imprint_letters_only_full_bottom_row, 58 pos = 0..57) では範囲外。
+// 別 transform (dactyl_manuform_number_row 等) に切替時のみ有効になる右側追加位置の保険。
+#define KEY_POSITION_R_EXTRA 62 63 64
+
 // --------------------------------------------------------------------
 // OS に渡す用ショートカット
 // --------------------------------------------------------------------
 #define X_LL_LL KP_N0
 #define X_LH_NUM RG(RA(RS(RC(LANGUAGE_5))))
-#define X_LH_SYM1 RG(RA(RS(RC(LANGUAGE_6))))
-#define X_LH_SYM2 RG(RA(RS(RC(LANGUAGE_7))))
+#define X_LH_SYMBOL1 RG(RA(RS(RC(LANGUAGE_6))))
+#define X_LH_SYMBOL2 RG(RA(RS(RC(LANGUAGE_7))))
 #define X_LH_FN RG(RA(RS(RC(LANGUAGE_8))))
 
 // LL レイヤー（INTERNATIONAL_* / KP_*）
@@ -101,15 +105,20 @@
 #define X_LL_B KP_ASTERISK
 
 // --------------------------------------------------------------------
-// TAB/DELETE/<arrow> レイヤー: 修飾子ラッパー + 共通ベースキー + 派生定義
+// TAB/DELETE/<arrow> レイヤー: 修飾子ラッパー + 共通ベースキー
 // --------------------------------------------------------------------
-// 各レイヤーの修飾子ラッパー（k はベースキー）
-#define X_TAB(k) RS(RA(k))
-#define X_DELETE(k) RS(RG(k))
-#define X_LEFT_ARROW(k) RA(RC(k))
-#define X_RIGHT_ARROW(k) RG(RC(k))
-#define X_UP_ARROW(k) RS(RC(k))
-#define X_DOWN_ARROW(k) RG(RA(k))
+// 各レイヤーの修飾子ラッパー。k はキー suffix (AA / QQ / Q / W / ... B 等)。
+// MORPH_LAYER が WRAP(QQ) のように呼び出すので、内部で X_BASE_##k を組合せる。
+#define X_TAB(k) RS(RA(X_BASE_##k))
+#define X_DELETE(k) RS(RG(X_BASE_##k))
+#define X_LEFT_ARROW(k) RA(RC(X_BASE_##k))
+#define X_RIGHT_ARROW(k) RG(RC(X_BASE_##k))
+#define X_UP_ARROW(k) RS(RC(X_BASE_##k))
+#define X_DOWN_ARROW(k) RG(RA(X_BASE_##k))
+
+// LL レイヤー用 wrapper。LL のキーマッピングはユニークなので X_LL_<suffix> 個別 define を参照する。
+// 例: X_LL(QQ) → X_LL_QQ → INTERNATIONAL_3
+#define X_LL(k) X_LL_##k
 
 // 共通ベースキー（各レイヤーで shared）
 #define X_BASE_AA NON_US_BACKSLASH
@@ -136,178 +145,100 @@
 #define X_BASE_V PRINTSCREEN
 #define X_BASE_B PAUSE_BREAK
 
-// TAB: SHIFT ALT
-#define X_TAB_AA X_TAB(X_BASE_AA)
-#define X_TAB_ZZ X_TAB(X_BASE_ZZ)
-#define X_TAB_QQ X_TAB(X_BASE_QQ)
-#define X_TAB_NUM X_TAB(X_BASE_NUM)
-#define X_TAB_SYM1 X_TAB(X_BASE_SYM1)
-#define X_TAB_SYM2 X_TAB(X_BASE_SYM2)
-#define X_TAB_T_LL X_TAB(X_BASE_T_LL)
-#define X_TAB_T_LR X_TAB(X_BASE_T_LR)
-#define X_TAB_Q X_TAB(X_BASE_Q)
-#define X_TAB_W X_TAB(X_BASE_W)
-#define X_TAB_E X_TAB(X_BASE_E)
-#define X_TAB_R X_TAB(X_BASE_R)
-#define X_TAB_T X_TAB(X_BASE_T)
-#define X_TAB_A X_TAB(X_BASE_A)
-#define X_TAB_S X_TAB(X_BASE_S)
-#define X_TAB_D X_TAB(X_BASE_D)
-#define X_TAB_F X_TAB(X_BASE_F)
-#define X_TAB_G X_TAB(X_BASE_G)
-#define X_TAB_Z X_TAB(X_BASE_Z)
-#define X_TAB_X X_TAB(X_BASE_X)
-#define X_TAB_C X_TAB(X_BASE_C)
-#define X_TAB_V X_TAB(X_BASE_V)
-#define X_TAB_B X_TAB(X_BASE_B)
-
-// DELETE: SHIFT, COMMAND
-#define X_DELETE_AA X_DELETE(X_BASE_AA)
-#define X_DELETE_ZZ X_DELETE(X_BASE_ZZ)
-#define X_DELETE_QQ X_DELETE(X_BASE_QQ)
-#define X_DELETE_NUM X_DELETE(X_BASE_NUM)
-#define X_DELETE_SYM1 X_DELETE(X_BASE_SYM1)
-#define X_DELETE_SYM2 X_DELETE(X_BASE_SYM2)
-#define X_DELETE_T_LL X_DELETE(X_BASE_T_LL)
-#define X_DELETE_T_LR X_DELETE(X_BASE_T_LR)
-#define X_DELETE_Q X_DELETE(X_BASE_Q)
-#define X_DELETE_W X_DELETE(X_BASE_W)
-#define X_DELETE_E X_DELETE(X_BASE_E)
-#define X_DELETE_R X_DELETE(X_BASE_R)
-#define X_DELETE_T X_DELETE(X_BASE_T)
-#define X_DELETE_A X_DELETE(X_BASE_A)
-#define X_DELETE_S X_DELETE(X_BASE_S)
-#define X_DELETE_D X_DELETE(X_BASE_D)
-#define X_DELETE_F X_DELETE(X_BASE_F)
-#define X_DELETE_G X_DELETE(X_BASE_G)
-#define X_DELETE_Z X_DELETE(X_BASE_Z)
-#define X_DELETE_X X_DELETE(X_BASE_X)
-#define X_DELETE_C X_DELETE(X_BASE_C)
-#define X_DELETE_V X_DELETE(X_BASE_V)
-#define X_DELETE_B X_DELETE(X_BASE_B)
-
-// LEFT_ARROW: ALT, CTRL
-#define X_LEFT_ARROW_AA X_LEFT_ARROW(X_BASE_AA)
-#define X_LEFT_ARROW_ZZ X_LEFT_ARROW(X_BASE_ZZ)
-#define X_LEFT_ARROW_QQ X_LEFT_ARROW(X_BASE_QQ)
-#define X_LEFT_ARROW_NUM X_LEFT_ARROW(X_BASE_NUM)
-#define X_LEFT_ARROW_SYM1 X_LEFT_ARROW(X_BASE_SYM1)
-#define X_LEFT_ARROW_SYM2 X_LEFT_ARROW(X_BASE_SYM2)
-#define X_LEFT_ARROW_T_LL X_LEFT_ARROW(X_BASE_T_LL)
-#define X_LEFT_ARROW_T_LR X_LEFT_ARROW(X_BASE_T_LR)
-#define X_LEFT_ARROW_Q X_LEFT_ARROW(X_BASE_Q)
-#define X_LEFT_ARROW_W X_LEFT_ARROW(X_BASE_W)
-#define X_LEFT_ARROW_E X_LEFT_ARROW(X_BASE_E)
-#define X_LEFT_ARROW_R X_LEFT_ARROW(X_BASE_R)
-#define X_LEFT_ARROW_T X_LEFT_ARROW(X_BASE_T)
-#define X_LEFT_ARROW_A X_LEFT_ARROW(X_BASE_A)
-#define X_LEFT_ARROW_S X_LEFT_ARROW(X_BASE_S)
-#define X_LEFT_ARROW_D X_LEFT_ARROW(X_BASE_D)
-#define X_LEFT_ARROW_F X_LEFT_ARROW(X_BASE_F)
-#define X_LEFT_ARROW_G X_LEFT_ARROW(X_BASE_G)
-#define X_LEFT_ARROW_Z X_LEFT_ARROW(X_BASE_Z)
-#define X_LEFT_ARROW_X X_LEFT_ARROW(X_BASE_X)
-#define X_LEFT_ARROW_C X_LEFT_ARROW(X_BASE_C)
-#define X_LEFT_ARROW_V X_LEFT_ARROW(X_BASE_V)
-#define X_LEFT_ARROW_B X_LEFT_ARROW(X_BASE_B)
-
-// RIGHT_ARROW: COMMAND, CTRL
-#define X_RIGHT_ARROW_AA X_RIGHT_ARROW(X_BASE_AA)
-#define X_RIGHT_ARROW_ZZ X_RIGHT_ARROW(X_BASE_ZZ)
-#define X_RIGHT_ARROW_QQ X_RIGHT_ARROW(X_BASE_QQ)
-#define X_RIGHT_ARROW_NUM X_RIGHT_ARROW(X_BASE_NUM)
-#define X_RIGHT_ARROW_SYM1 X_RIGHT_ARROW(X_BASE_SYM1)
-#define X_RIGHT_ARROW_SYM2 X_RIGHT_ARROW(X_BASE_SYM2)
-#define X_RIGHT_ARROW_T_LL X_RIGHT_ARROW(X_BASE_T_LL)
-#define X_RIGHT_ARROW_T_LR X_RIGHT_ARROW(X_BASE_T_LR)
-#define X_RIGHT_ARROW_Q X_RIGHT_ARROW(X_BASE_Q)
-#define X_RIGHT_ARROW_W X_RIGHT_ARROW(X_BASE_W)
-#define X_RIGHT_ARROW_E X_RIGHT_ARROW(X_BASE_E)
-#define X_RIGHT_ARROW_R X_RIGHT_ARROW(X_BASE_R)
-#define X_RIGHT_ARROW_T X_RIGHT_ARROW(X_BASE_T)
-#define X_RIGHT_ARROW_A X_RIGHT_ARROW(X_BASE_A)
-#define X_RIGHT_ARROW_S X_RIGHT_ARROW(X_BASE_S)
-#define X_RIGHT_ARROW_D X_RIGHT_ARROW(X_BASE_D)
-#define X_RIGHT_ARROW_F X_RIGHT_ARROW(X_BASE_F)
-#define X_RIGHT_ARROW_G X_RIGHT_ARROW(X_BASE_G)
-#define X_RIGHT_ARROW_Z X_RIGHT_ARROW(X_BASE_Z)
-#define X_RIGHT_ARROW_X X_RIGHT_ARROW(X_BASE_X)
-#define X_RIGHT_ARROW_C X_RIGHT_ARROW(X_BASE_C)
-#define X_RIGHT_ARROW_V X_RIGHT_ARROW(X_BASE_V)
-#define X_RIGHT_ARROW_B X_RIGHT_ARROW(X_BASE_B)
-
-// UP_ARROW: SHIFT, CTRL
-#define X_UP_ARROW_AA X_UP_ARROW(X_BASE_AA)
-#define X_UP_ARROW_ZZ X_UP_ARROW(X_BASE_ZZ)
-#define X_UP_ARROW_QQ X_UP_ARROW(X_BASE_QQ)
-#define X_UP_ARROW_NUM X_UP_ARROW(X_BASE_NUM)
-#define X_UP_ARROW_SYM1 X_UP_ARROW(X_BASE_SYM1)
-#define X_UP_ARROW_SYM2 X_UP_ARROW(X_BASE_SYM2)
-#define X_UP_ARROW_T_LL X_UP_ARROW(X_BASE_T_LL)
-#define X_UP_ARROW_T_LR X_UP_ARROW(X_BASE_T_LR)
-#define X_UP_ARROW_Q X_UP_ARROW(X_BASE_Q)
-#define X_UP_ARROW_W X_UP_ARROW(X_BASE_W)
-#define X_UP_ARROW_E X_UP_ARROW(X_BASE_E)
-#define X_UP_ARROW_R X_UP_ARROW(X_BASE_R)
-#define X_UP_ARROW_T X_UP_ARROW(X_BASE_T)
-#define X_UP_ARROW_A X_UP_ARROW(X_BASE_A)
-#define X_UP_ARROW_S X_UP_ARROW(X_BASE_S)
-#define X_UP_ARROW_D X_UP_ARROW(X_BASE_D)
-#define X_UP_ARROW_F X_UP_ARROW(X_BASE_F)
-#define X_UP_ARROW_G X_UP_ARROW(X_BASE_G)
-#define X_UP_ARROW_Z X_UP_ARROW(X_BASE_Z)
-#define X_UP_ARROW_X X_UP_ARROW(X_BASE_X)
-#define X_UP_ARROW_C X_UP_ARROW(X_BASE_C)
-#define X_UP_ARROW_V X_UP_ARROW(X_BASE_V)
-#define X_UP_ARROW_B X_UP_ARROW(X_BASE_B)
-
-// DOWN_ARROW: COMMAND, ALT
-#define X_DOWN_ARROW_AA X_DOWN_ARROW(X_BASE_AA)
-#define X_DOWN_ARROW_ZZ X_DOWN_ARROW(X_BASE_ZZ)
-#define X_DOWN_ARROW_QQ X_DOWN_ARROW(X_BASE_QQ)
-#define X_DOWN_ARROW_NUM X_DOWN_ARROW(X_BASE_NUM)
-#define X_DOWN_ARROW_SYM1 X_DOWN_ARROW(X_BASE_SYM1)
-#define X_DOWN_ARROW_SYM2 X_DOWN_ARROW(X_BASE_SYM2)
-#define X_DOWN_ARROW_T_LL X_DOWN_ARROW(X_BASE_T_LL)
-#define X_DOWN_ARROW_T_LR X_DOWN_ARROW(X_BASE_T_LR)
-#define X_DOWN_ARROW_Q X_DOWN_ARROW(X_BASE_Q)
-#define X_DOWN_ARROW_W X_DOWN_ARROW(X_BASE_W)
-#define X_DOWN_ARROW_E X_DOWN_ARROW(X_BASE_E)
-#define X_DOWN_ARROW_R X_DOWN_ARROW(X_BASE_R)
-#define X_DOWN_ARROW_T X_DOWN_ARROW(X_BASE_T)
-#define X_DOWN_ARROW_A X_DOWN_ARROW(X_BASE_A)
-#define X_DOWN_ARROW_S X_DOWN_ARROW(X_BASE_S)
-#define X_DOWN_ARROW_D X_DOWN_ARROW(X_BASE_D)
-#define X_DOWN_ARROW_F X_DOWN_ARROW(X_BASE_F)
-#define X_DOWN_ARROW_G X_DOWN_ARROW(X_BASE_G)
-#define X_DOWN_ARROW_Z X_DOWN_ARROW(X_BASE_Z)
-#define X_DOWN_ARROW_X X_DOWN_ARROW(X_BASE_X)
-#define X_DOWN_ARROW_C X_DOWN_ARROW(X_BASE_C)
-#define X_DOWN_ARROW_V X_DOWN_ARROW(X_BASE_V)
-#define X_DOWN_ARROW_B X_DOWN_ARROW(X_BASE_B)
 
 // --------------------------------------------------------------------
 // 共通マクロ
 // --------------------------------------------------------------------
+
+// 全 modifier (LGUI / LSFT / LCTL / LALT)。mod-morph の mods / keep-mods で使う
+#define ALL_MODS (MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT)
+
+// NUM/SYM1/SYM2/FN レイヤー row 4 (左右どちらも &none x 5 で共通)
+#define LAYER_NONE_ROW_4 \
+        &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
 
 // NUM/SYM1/SYM2/FN レイヤー末尾 2 行（DEFAULT 以外で共通）
 #define LAYER_THUMB_COMMON \
         &kp LEFT_CONTROL  &kp LEFT_ALT  &none          &mkp MB3  &mkp MB1                &mkp MB2 \
         &mt T_LL          &mt T_LR      &bootloader    &none     &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
 
+// シンプルな hold-tap (flavor=hold-preferred / tapping-term-ms=200ms / hold=&kp)。
+// name        : 生成する behavior 名
+// tap_binding : tap 時の binding (&kp / &kana / &eiji 等)
+#define HOLD_TAP_HP200(name, tap_binding) \
+    name: name { \
+      compatible = "zmk,behavior-hold-tap"; \
+      #binding-cells = <2>; \
+      tapping-term-ms = <200>; \
+      flavor = "hold-preferred"; \
+      bindings = <&kp>, <tap_binding>; \
+    };
+
+// DEFAULT_LAYER 親指列で使う _layer 呼出（layer hold + OS 通知用 X_LH_<NAME> 送出）。
+// NAME : SYMBOL1 / SYMBOL2 / NUM / FN (LAYER 番号と X_LH_ 接尾辞の共通部分)
+#define LH_LAYER(NAME) &_layer NAME##_LAYER X_LH_##NAME
+
+// 左親指 layer-tap (FN/SYMBOL1/SYMBOL2/NUM を起動する hold-tap)。
+// hold-trigger は RIGHT_SIDE。左親指 hold 中に左手キーを誤打しても layer 側で取られないため。
+// tapping-term-ms = 400ms / quick-tap-ms = 200ms で連打に強い。
+#define HOLD_TAP_LAYER_RIGHT(name) \
+    name: name { \
+      compatible = "zmk,behavior-hold-tap"; \
+      #binding-cells = <2>; \
+      flavor = "hold-preferred"; \
+      tapping-term-ms = <400>; \
+      quick-tap-ms = <200>; \
+      bindings = <&mo>, <&kp>; \
+      hold-trigger-key-positions = <KEY_POSITION_RIGHT_SIDE KEY_POSITION_R_EXTRA>; \
+    };
+
+// トラックボールでスクロールするための input-processors 共通設定。
+//   - zip_xy_scaler 3 64                     : 感度を 1/3 にしてスクロールを遅くする
+//   - zip_xy_to_scroll_mapper                 : カーソル移動でなくスクロール出力にする
+//   - zip_scroll_transform Y_INVERT           : ボール上方向 = ビュー上方向 (top of trackball = view up)
+#define TRACKBALL_SCROLL_PROCESSORS \
+      <&zip_xy_scaler 3 64>, \
+      <&zip_xy_to_scroll_mapper>, \
+      <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>
+
+// TAB / DELETE 用の hold-tap + mod-morph ペア。
+// 修飾子 (ALL_MODS) を押下していない時は hold-tap (tap=KEY, hold=mo LAYER)、
+// 修飾子押下時は hold-tap をバイパスして単に &kp KEY を送出する。
+// ARROW_BEHAVIOR は mod 押下時も hold-tap 経由でレイヤーに入れるが、こちらは bypass。
+// name  : ベース名 (例: _tab → _tab と _tab_ht を生成)
+// LAYER : hold 時に潜るレイヤー (例: TAB_LAYER)
+// KEY   : tap 時に出すキー (例: TAB)
+#define LAYER_TAP_MORPH_BYPASS(name, LAYER, KEY) \
+    name##_ht: name##_ht { \
+      compatible = "zmk,behavior-hold-tap"; \
+      #binding-cells = <2>; \
+      flavor = "tap-unless-interrupted"; \
+      tapping-term-ms = <800>; \
+      bindings = <&mo>, <&kp>; \
+      hold-trigger-key-positions = <KEY_POSITION_LEFT_SIDE KEY_POSITION_L_THUMB>; \
+    }; \
+    name: name { \
+      compatible = "zmk,behavior-mod-morph"; \
+      #binding-cells = <0>; \
+      bindings = <&name##_ht LAYER KEY>, <&kp KEY>; \
+      mods = <ALL_MODS>; \
+      keep-mods = <ALL_MODS>; \
+    };
+
 // LL/TAB/DELETE/<arrow> レイヤー全体を 1 行で生成。
-// LAYER  : レイヤー名 (例: LL_LAYER)
-// P      : キー接頭辞 (例: X_LL → X_LL_QQ などに展開)
-// R4R    : row4 右側 5 セル分（例: &none &none &none &none &none）
-#define MORPH_LAYER(LAYER, P, R4R) \
+// LAYER : レイヤー名 (例: LL_LAYER)
+// WRAP  : キー wrapper macro (例: X_LL / X_TAB / X_DOWN_ARROW)。WRAP(QQ) 等が
+//         実際のキーコードに展開される (X_LL は object 参照、X_TAB 等は修飾子付与)
+// R4R   : row4 右側 5 セル分（例: &none &none &none &none &none）
+#define MORPH_LAYER(LAYER, WRAP, R4R) \
     LAYER { \
       bindings = < \
-        &kp P##_QQ  &kp P##_Q  &kp P##_W  &kp P##_E  &kp P##_R  &kp P##_T    &none  &none  &none  &none  &none  &none \
-        &kp P##_AA  &kp P##_A  &kp P##_S  &kp P##_D  &kp P##_F  &kp P##_G    &none  &none  &none  &none  &none  &none \
-        &kp P##_ZZ  &kp P##_Z  &kp P##_X  &kp P##_C  &kp P##_V  &kp P##_B    &none  &none  &none  &none  &none  &none \
-        &none  &none  &kp P##_SYM2  &kp P##_SYM1  &kp P##_NUM                R4R \
-        &none         &none         &none                                    &none  &none  &none \
-        &kp P##_T_LL  &kp P##_T_LR  &none                                    &none  &none  &none \
+        &kp WRAP(QQ)  &kp WRAP(Q)  &kp WRAP(W)  &kp WRAP(E)  &kp WRAP(R)  &kp WRAP(T)    &none  &none  &none  &none  &none  &none \
+        &kp WRAP(AA)  &kp WRAP(A)  &kp WRAP(S)  &kp WRAP(D)  &kp WRAP(F)  &kp WRAP(G)    &none  &none  &none  &none  &none  &none \
+        &kp WRAP(ZZ)  &kp WRAP(Z)  &kp WRAP(X)  &kp WRAP(C)  &kp WRAP(V)  &kp WRAP(B)    &none  &none  &none  &none  &none  &none \
+        &none  &none  &kp WRAP(SYM2)  &kp WRAP(SYM1)  &kp WRAP(NUM)                      R4R \
+        &none         &none         &none                                                &none  &none  &none \
+        &kp WRAP(T_LL)  &kp WRAP(T_LR)  &none                                            &none  &none  &none \
       >; \
     };
 
@@ -330,8 +261,31 @@
       compatible = "zmk,behavior-mod-morph"; \
       #binding-cells = <0>; \
       bindings = <&name##_ht LAYER KEY>, <&name##_ht LAYER KEY>; \
-      mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>; \
-      keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>; \
+      mods = <ALL_MODS>; \
+      keep-mods = <ALL_MODS>; \
+    };
+
+// _a 〜 _z 系 letter mod-morph を生成。
+// Shift 未押下 → 素のキー / Shift 押下 → eiji_macro 経由で英語入力モードへ切替えてから大文字出力。
+// name   : 生成する behavior 名 (例: _a)
+// letter : 出力キー (例: A)
+#define LETTER_MORPH(name, letter) \
+    name: name { \
+      compatible = "zmk,behavior-mod-morph"; \
+      #binding-cells = <0>; \
+      bindings = <&kp letter>, <&eiji_macro letter>; \
+      mods = <(MOD_LSFT)>; \
+      keep-mods = <(MOD_LSFT)>; \
+    };
+
+// EIJI 切替 → 指定キー press → pause → release (long-press でリピート可能)。
+// name : 生成する behavior 名 (例: en0 / en_under)
+// key  : 出力キー (例: N0 / UNDERSCORE)
+#define EN_MACRO(name, key) \
+    name: name { \
+      compatible = "zmk,behavior-macro"; \
+      #binding-cells = <0>; \
+      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp key>, <&macro_pause_for_release>, <&macro_release &kp key>; \
     };
 
 // Ctrl+letter を別キーへ remap する 3 段ネスト mod-morph を生成。

@@ -13,29 +13,17 @@
   hold-while-undecided;
 };
 
-// right hand trackball configuration
+// 右手トラックボール (NUM/LL レイヤー上でだけスクロール化)
 &trackball_peripheral_listener {
   scroller {
     layers = <NUM_LAYER LL_LAYER>;
-    input-processors =
-      // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
-      <&zip_xy_scaler 3 64>,
-      // make this trackball output scrolling events by default instead of cursor movement,
-      <&zip_xy_to_scroll_mapper>,
-      // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
-      <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+    input-processors = TRACKBALL_SCROLL_PROCESSORS;
   };
 };
 
-// left hand trackball configuration
+// 左手トラックボール (常時スクロール化)
 &trackball_central_listener {
-  input-processors =
-    // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
-    <&zip_xy_scaler 3 64>,
-    // make this trackball output scrolling events by default instead of cursor movement,
-    <&zip_xy_to_scroll_mapper>,
-    // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
-    <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+  input-processors = TRACKBALL_SCROLL_PROCESSORS;
 };
 
 / {
@@ -50,78 +38,7 @@
     #include "macros.dtsi"
   };
   behaviors {
-    ime_kana: ime_kana {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      flavor = "hold-preferred";
-      bindings = <&kp>, <&kana>;
-    };
-    ime_eiji: ime_eiji {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      flavor = "hold-preferred";
-      bindings = <&kp>, <&eiji>;
-    };
-
-    // comboから呼ばれる
-    ime: ime {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      flavor = "hold-preferred";
-      bindings = <&kp>, <&kp>;
-    };
-    #include "letter_morphs.dtsi"
-    #include "arrow_behaviors.dtsi"
-    #include "ctrl_letter_morphs.dtsi"
-    _tab: _tab {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&_tab_ht TAB_LAYER TAB>, <&kp TAB>;
-      mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-      keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-    };
-    _tab_ht: _tab_ht {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "tap-unless-interrupted";
-      tapping-term-ms = <800>;
-      bindings = <&mo>, <&kp>;
-      hold-trigger-key-positions = <KEY_POSITION_LEFT_SIDE KEY_POSITION_L_THUMB>;
-    };
-    _delete: _delete {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&_delete_ht DELETE_LAYER DELETE>, <&kp DELETE>;
-      mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-      keep-mods = <( MOD_LGUI|MOD_LSFT|MOD_LCTL|MOD_LALT )>;
-    };
-    _delete_ht: _delete_ht {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "tap-unless-interrupted";
-      tapping-term-ms = <800>;
-      bindings = <&mo>, <&kp>;
-      hold-trigger-key-positions = <KEY_POSITION_LEFT_SIDE KEY_POSITION_L_THUMB>;
-    };
-    _layer: _layer {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "hold-preferred";
-      tapping-term-ms = <400>;
-      quick-tap-ms = <200>;
-      bindings = <&mo>, <&kp>;
-      hold-trigger-key-positions = <KEY_POSITION_RIGHT_SIDE 62 63 64>;
-    };
-    thumb_mt: thumb_mt {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      flavor = "hold-preferred";
-      bindings = <&kp>, <&kp>;
-    };
+    #include "imprint_behaviors.dtsi"
   };
   keymap {
     compatible = "zmk,keymap";
@@ -131,7 +48,7 @@
         &kp X_QQ    &_q       &_w  &_e       &_r       &_t                                                                                                            &_y       &_u       &_i   &_o    &_p_ctrl              &kp X_PP
         &kp SPACE   &_a       &_s  &_d_ctrl  &_f_ctrl  &_g                                                                                                            &_h_ctrl  &_j_ctrl  &_k   &_l    &lt LL_LAYER X_LL_LL  &kp BACKSPACE
         &kp ESCAPE  &_z       &_x  &_c       &_v       &_b_ctrl                                                                                                       &_n_ctrl  &_m       &_up  &_tab  &_delete              &kp RETURN
-        &none  &_layer FN_LAYER X_LH_FN  &_layer SYMBOL2_LAYER X_LH_SYM2  &_layer SYMBOL1_LAYER X_LH_SYM1  &_layer NUM_LAYER X_LH_NUM                  &_left         &_down        &_right  &none  &none
+        &none  LH_LAYER(FN)  LH_LAYER(SYMBOL2)  LH_LAYER(SYMBOL1)  LH_LAYER(NUM)                                                                                  &_left         &_down        &_right  &none  &none
         &kp LEFT_CONTROL  &kp LEFT_ALT  &none                                                                                                          &mkp MB3       &mkp MB1                &mkp MB2
         &mt T_LL          &mt T_LR      &bootloader                                                                                                    &mo NUM_LAYER  &thumb_mt LEFT_ALT ESC  &thumb_mt LEFT_CONTROL SPACE
       >;
@@ -141,7 +58,7 @@
         &none  &none  &none  &none  &none  &none       &none  &en7  &en8  &en9  &none  &none
         &none  &none  &none  &none  &none  &none       &none  &en4  &en5  &en6  &none  &none
         &none  &none  &none  &none  &none  &none       &en0   &en1  &en2  &en3  &none  &none
-        &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
+        LAYER_NONE_ROW_4
         LAYER_THUMB_COMMON
       >;
     };
@@ -150,7 +67,7 @@
         &none  &none  &none  &none  &none  &none       &en_under  &en_pipe   &en_amp    &en_excl   &en_q      &none
         &none  &none  &none  &none  &none  &none       &en_hash   &en_comma  &en_dot    &en_semi   &en_colon  &en_at
         &none  &none  &none  &none  &none  &none       &en_dq     &en_sq     &en_grave  &en_slash  &en_bsl    &none
-        &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
+        LAYER_NONE_ROW_4
         LAYER_THUMB_COMMON
       >;
     };
@@ -159,7 +76,7 @@
         &none  &none  &none  &none  &none  &none       &en_caret  &en_lt    &en_gt     &en_lbkt  &en_rbkt  &none
         &none  &none  &none  &none  &none  &none       &en_eq     &en_plus  &en_minus  &en_ast   &en_pct   &en_dollar
         &none  &none  &none  &none  &none  &none       &en_tilde  &en_lpar  &en_rpar   &en_lbrc  &en_rbrc  &none
-        &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
+        LAYER_NONE_ROW_4
         LAYER_THUMB_COMMON
       >;
     };
@@ -168,7 +85,7 @@
         &none  &none  &none  &none  &none  &none       &none  &kp F1  &kp F2   &kp F3   &kp F4   &none
         &none  &none  &none  &none  &none  &none       &none  &kp F5  &kp F6   &kp F7   &kp F8   &none
         &none  &none  &none  &none  &none  &none       &none  &kp F9  &kp F10  &kp F11  &kp F12  &none
-        &none  &none  &none  &none  &none              &none  &none  &none  &none  &none
+        LAYER_NONE_ROW_4
         LAYER_THUMB_COMMON
       >;
     };

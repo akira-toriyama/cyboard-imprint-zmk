@@ -1,185 +1,30 @@
 // _a 〜 _z の letter mod-morph 群（Shift で eiji_macro 経由の大文字化）
 // behaviors { } ブロック内に #include して使う
+// LETTER_MORPH マクロは keymap_defines.h で定義
 
-    _a: _a {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp A>, <&eiji_macro A>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _b: _b {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp B>, <&eiji_macro B>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _c: _c {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp C>, <&eiji_macro C>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _d: _d {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp D>, <&eiji_macro D>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _e: _e {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp E>, <&eiji_macro E>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _f: _f {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp F>, <&eiji_macro F>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _g: _g {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp G>, <&eiji_macro G>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _h: _h {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp H>, <&eiji_macro H>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _i: _i {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp I>, <&eiji_macro I>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _j: _j {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp J>, <&eiji_macro J>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _k: _k {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp K>, <&eiji_macro K>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _l: _l {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp L>, <&eiji_macro L>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _m: _m {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp M>, <&eiji_macro M>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _n: _n {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp N>, <&eiji_macro N>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _o: _o {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp O>, <&eiji_macro O>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _p: _p {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp P>, <&eiji_macro P>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _q: _q {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp Q>, <&eiji_macro Q>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _r: _r {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp R>, <&eiji_macro R>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _s: _s {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp S>, <&eiji_macro S>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _t: _t {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp T>, <&eiji_macro T>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _u: _u {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp U>, <&eiji_macro U>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _v: _v {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp V>, <&eiji_macro V>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _w: _w {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp W>, <&eiji_macro W>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _x: _x {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp X>, <&eiji_macro X>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _y: _y {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp Y>, <&eiji_macro Y>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
-    _z: _z {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp Z>, <&eiji_macro Z>;
-      mods = <( MOD_LSFT )>;
-      keep-mods = <( MOD_LSFT )>;
-    };
+    LETTER_MORPH(_a, A)
+    LETTER_MORPH(_b, B)
+    LETTER_MORPH(_c, C)
+    LETTER_MORPH(_d, D)
+    LETTER_MORPH(_e, E)
+    LETTER_MORPH(_f, F)
+    LETTER_MORPH(_g, G)
+    LETTER_MORPH(_h, H)
+    LETTER_MORPH(_i, I)
+    LETTER_MORPH(_j, J)
+    LETTER_MORPH(_k, K)
+    LETTER_MORPH(_l, L)
+    LETTER_MORPH(_m, M)
+    LETTER_MORPH(_n, N)
+    LETTER_MORPH(_o, O)
+    LETTER_MORPH(_p, P)
+    LETTER_MORPH(_q, Q)
+    LETTER_MORPH(_r, R)
+    LETTER_MORPH(_s, S)
+    LETTER_MORPH(_t, T)
+    LETTER_MORPH(_u, U)
+    LETTER_MORPH(_v, V)
+    LETTER_MORPH(_w, W)
+    LETTER_MORPH(_x, X)
+    LETTER_MORPH(_y, Y)
+    LETTER_MORPH(_z, Z)
