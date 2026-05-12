@@ -39,7 +39,7 @@ parse_config:
     END: ⤓
     PAGE_UP: ⇞
     PAGE_DOWN: ⇟
-    # NumPad 数字
+    # NumPad 数字 (KP_NUMBER_* alias は本リポでは未使用なので省略)
     KP_N0: '0'
     KP_N1: '1'
     KP_N2: '2'
@@ -50,16 +50,6 @@ parse_config:
     KP_N7: '7'
     KP_N8: '8'
     KP_N9: '9'
-    KP_NUMBER_0: '0'
-    KP_NUMBER_1: '1'
-    KP_NUMBER_2: '2'
-    KP_NUMBER_3: '3'
-    KP_NUMBER_4: '4'
-    KP_NUMBER_5: '5'
-    KP_NUMBER_6: '6'
-    KP_NUMBER_7: '7'
-    KP_NUMBER_8: '8'
-    KP_NUMBER_9: '9'
     # NumPad 記号
     KP_PLUS: +
     KP_MINUS: '-'
@@ -76,6 +66,11 @@ parse_config:
     PRINTSCREEN: PrtSc
     PAUSE_BREAK: Pause
     # macOS 用 LANGUAGE_*（自作 OS 通知の意味で表示）
+    # LANGUAGE_1/2  : macOS 標準 (かな / 英数)
+    # LANGUAGE_3/4  : to_default_layer_macro の効果音用 (X_SOUND_1/2)
+    # LANGUAGE_5..8 : 左親指 layer-tap (LH_LAYER) が hold 中に OS に通知する signal
+    # LANGUAGE_9    : 右上 P キー (X_PP) で OS 側 (Karabiner 等) に渡すフック。
+    #                 X_QQ (左上 Q = LANGUAGE_8) と対になるシンメトリ命名
     LANGUAGE_1: かな
     LANGUAGE_2: 英数
     LANGUAGE_3: ♪1
@@ -98,7 +93,9 @@ parse_config:
   zmk_additional_includes:
     - config
   zmk_combos: {}
-  # &mkp / &msc / &bootloader / &en* / &kana / &eiji 等、`&kp` 以外の binding をリネーム
+  # &mkp / &msc / &bootloader / &en* / &kana / &eiji 等、`&kp` 以外の binding をリネーム。
+  # NOTE: &en* の追加・削除時は config/eiji_macros.dtsi も同期させること
+  #       (keymap-drawer は macro の display-name を参照しないので二重管理)
   raw_binding_map:
     # ポインティング / システム
     "&mkp MB1": 🖱L
@@ -121,42 +118,72 @@ parse_config:
     "&en8": '8'
     "&en9": '9'
     # EIJI 切替 → 記号 (SYMBOL1_LAYER)
-    "&en_under": _
+    "&en_under": '_'
     "&en_pipe":  '|'
     "&en_amp":   '&'
     "&en_excl":  '!'
     "&en_q":     '?'
     "&en_hash":  '#'
     "&en_comma": ','
-    "&en_dot":   .
+    "&en_dot":   '.'
     "&en_semi":  ';'
     "&en_colon": ':'
     "&en_at":    '@'
     "&en_dq":    '"'
     "&en_sq":    "'"
     "&en_grave": '`'
-    "&en_slash": /
-    "&en_bsl":   \
+    "&en_slash": '/'
+    "&en_bsl":   '\'
     # EIJI 切替 → 記号 (SYMBOL2_LAYER)
-    "&en_caret":  ^
-    "&en_lt":     <
+    "&en_caret":  '^'
+    "&en_lt":     '<'
     "&en_gt":     '>'
     "&en_lbkt":   '['
     "&en_rbkt":   ']'
     "&en_eq":     '='
-    "&en_plus":   +
+    "&en_plus":   '+'
     "&en_minus":  '-'
     "&en_ast":    '*'
     "&en_pct":    '%'
-    "&en_dollar": $
+    "&en_dollar": '$'
     "&en_tilde":  '~'
-    "&en_lpar":   (
-    "&en_rpar":   )
+    "&en_lpar":   '('
+    "&en_rpar":   ')'
     "&en_lbrc":   '{'
     "&en_rbrc":   '}'
     # combo (ime_kana/ime_eiji の tap binding として呼ばれる)
     "&kana": かな
     "&eiji": 英数
+  # 修飾子関数の表記制御。
+  # ⇥/⌦/←/→/↑/↓ レイヤー (X_TAB/X_DELETE/X_*_ARROW) では各 wrapper が 2mod
+  # 付与するが、レイヤーラベルで暗黙に分かるので special_combinations で空文字に
+  # して非表示にする。Default 左親指の 4mod chain (X_LH_NUM 等) は意味あるので維持。
+  modifier_fn_map:
+    left_ctrl: Ctl+
+    right_ctrl: Ctl+
+    left_shift: Sft+
+    right_shift: Sft+
+    left_alt: Alt+
+    right_alt: AltGr+
+    left_gui: Gui+
+    right_gui: Gui+
+    keycode_combiner: "{mods}{key}"
+    mod_combiner: "{mod_1}{mod_2}"
+    special_combinations:
+      # 2mod sub-layers: 表示しない (レイヤーラベルで暗黙)
+      "right_shift+right_alt": ""    # X_TAB (⇥)
+      "right_shift+right_gui": ""    # X_DELETE (⌦)
+      "right_alt+right_ctrl": ""     # X_LEFT_ARROW (←)
+      "right_gui+right_ctrl": ""     # X_RIGHT_ARROW (→)
+      "right_shift+right_ctrl": ""   # X_UP_ARROW (↑)
+      "right_gui+right_alt": ""      # X_DOWN_ARROW (↓)
+      # 4mod chain (Default 左親指 LH_LAYER / X_QQ / X_PP): Hyper として短縮。
+      # Hyper = Ctrl + Alt + Cmd + Shift の 4mod 同時押し (macOS 慣習)。
+      # ここでは Right mods 版 (RG/RA/RS/RC) も同義として扱う
+      "right_ctrl+right_shift+right_alt+right_gui": "Hyper+"
+      # keymap-drawer デフォルト
+      "left_ctrl+left_alt+left_gui+left_shift": "Hyper+"
+      "left_ctrl+left_alt+left_shift": "Meh+"
 
 draw_config:
   # 親指クラスタが横長なので、列をきつく詰めない

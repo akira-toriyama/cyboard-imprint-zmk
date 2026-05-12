@@ -1,7 +1,10 @@
 // EIJI 切替 → 数字 / 記号キー用の専用 behavior 群
 // macros { } ブロック内に #include して使う
 // EN_MACRO マクロは keymap_defines.h で定義
-// keymap-drawer 上の表示は keymap_drawer.config.yaml の raw_binding_map で設定
+//
+// NOTE: 追加・削除・リネーム時は keymap_drawer.config.yaml の raw_binding_map も
+//       同期させること。keymap-drawer は macro の display-name を参照しないため、
+//       SVG 上の表示文字は yaml 側に別途登録する必要がある (二重管理)
 
     // EIJI 切替 → 数字キー（NUM_LAYER 用）
     EN_MACRO(en0, N0)
