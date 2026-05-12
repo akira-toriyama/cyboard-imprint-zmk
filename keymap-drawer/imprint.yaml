@@ -11,16 +11,16 @@ layers:
   - {t: U, s: '&eiji_macro U'}
   - {t: I, s: '&eiji_macro I'}
   - {t: O, s: '&eiji_macro O'}
-  - {t: P, s: '&eiji_macro P'}
+  - P
   - Gui+AltGr+Sft+Ctl+LANGUAGE 9
   - ␣
   - {t: A, s: '&eiji_macro A'}
   - {t: S, s: '&eiji_macro S'}
-  - {t: D, s: '&eiji_macro D'}
-  - {t: F, s: '&eiji_macro F'}
+  - D
+  - F
   - {t: G, s: '&eiji_macro G'}
-  - {t: H, s: '&eiji_macro H'}
-  - {t: J, s: '&eiji_macro J'}
+  - H
+  - J
   - {t: K, s: '&eiji_macro K'}
   - {t: L, s: '&eiji_macro L'}
   - {t: KP 0, h: '5'}
@@ -30,8 +30,8 @@ layers:
   - {t: X, s: '&eiji_macro X'}
   - {t: C, s: '&eiji_macro C'}
   - {t: V, s: '&eiji_macro V'}
-  - {t: B, s: '&eiji_macro B'}
-  - {t: N, s: '&eiji_macro N'}
+  - B
+  - N
   - {t: M, s: '&eiji_macro M'}
   - {t: ↑, h: '10', s: ↑}
   - {t: ⇥, h: '6', s: ⇥}
