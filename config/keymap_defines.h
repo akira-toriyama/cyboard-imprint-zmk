@@ -321,6 +321,8 @@
       #binding-cells = <2>; \
       flavor = "tap-unless-interrupted"; \
       tapping-term-ms = <800>; \
+      hold-while-undecided; \
+      hold-while-undecided-linger; \
       bindings = <&mo>, <&kp>; \
       hold-trigger-key-positions = <KEY_POSITION_LEFT_SIDE KEY_POSITION_L_THUMB P1 P2>; \
     }; \
