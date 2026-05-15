@@ -52,6 +52,6 @@ just build imprint_left      # imprint_right も同様
 cp ~/Documents/zmk/zmk-workspace/firmware/imprint_left-assimilator-bt.uf2 '/Volumes/NO NAME/'
 ```
 
-> ZMK 本体は fork（`akira-toriyama/zmk` の `patch/mod-morph-send-report`）を参照。
-> `config/imprint.conf` の `CONFIG_ZMK_HID_SEPARATE_MOD_RELEASE_REPORT` で mod-morph の
-> HID report flush パッチを有効化している（[upstream PR #3348](https://github.com/zmkfirmware/zmk/pull/3348) マージ後に畳む予定）。
+> ZMK は upstream（`zmkfirmware/zmk@main`）を参照。以前は macOS Mission Control
+> 誤発火回避の mod-morph patch を fork で当てていたが、emacs 風ショートカット廃止に
+> 伴い不要となり撤去した（実機検証済み）。
