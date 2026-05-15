@@ -1,24 +1,11 @@
 // behaviors { } ブロックの中身。imprint.keymap から #include して使う。
-// マクロ群 (HOLD_TAP_HP200 / LAYER_TAP_MORPH_BYPASS / HOLD_TAP_LAYER_RIGHT) は keymap_defines.h で定義。
+// マクロ (HOLD_TAP_HP200) は keymap_defines.h で定義。
 
-    /* ==== IME hold-tap (combos 経由で呼ばれる) ==== */
+    // ==== IME hold-tap (combos.dtsi の ime_kana / ime_eiji 経由で発火) ====
     HOLD_TAP_HP200(ime_kana, &kana)
     HOLD_TAP_HP200(ime_eiji, &eiji)
-    HOLD_TAP_HP200(ime, &kp)
 
-    /* ==== letter / arrow / Ctrl+letter morphs ==== */
+    // ==== letter / arrow mod-morph ====
     #include "letter_morphs.dtsi"
     #include "arrow_behaviors.dtsi"
-    #include "ctrl_letter_morphs.dtsi"
 
-    /* ==== TAB / DELETE (hold で sub-layer / mod 押下時はバイパス) ====
-       hold-trigger は LEFT_SIDE + L_THUMB のみ。
-       TAB/DELETE sub-layer 内のキーは左半分にしか配置していないため。 */
-    LAYER_TAP_MORPH_BYPASS(_tab,    TAB_LAYER,    TAB)
-    LAYER_TAP_MORPH_BYPASS(_delete, DELETE_LAYER, DELETE)
-
-    /* ==== 左親指 layer 呼出 (LH_LAYER 経由で SYMBOL1/SYMBOL2/NUM/FN を起動) ==== */
-    HOLD_TAP_LAYER_RIGHT(_layer)
-
-    /* ==== 親指 mod-tap (T_LL/T_LR は組込み &mt、ALT ESC / CTL SPACE は thumb_mt) ==== */
-    HOLD_TAP_HP200(thumb_mt, &kp)
