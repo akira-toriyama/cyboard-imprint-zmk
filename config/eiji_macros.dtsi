@@ -6,17 +6,17 @@
 //       同期させること。keymap-drawer は macro の display-name を参照しないため、
 //       SVG 上の表示文字は yaml 側に別途登録する必要がある (二重管理)
 
-    // EIJI 切替 → 数字キー（NUM_LAYER 用）
-    EN_MACRO(en0, N0)
-    EN_MACRO(en1, N1)
-    EN_MACRO(en2, N2)
-    EN_MACRO(en3, N3)
-    EN_MACRO(en4, N4)
-    EN_MACRO(en5, N5)
-    EN_MACRO(en6, N6)
-    EN_MACRO(en7, N7)
-    EN_MACRO(en8, N8)
-    EN_MACRO(en9, N9)
+    // EIJI 切替 → 数字キー（NUMBER_LAYER 用）
+    EN_MACRO(en_0, N0)
+    EN_MACRO(en_1, N1)
+    EN_MACRO(en_2, N2)
+    EN_MACRO(en_3, N3)
+    EN_MACRO(en_4, N4)
+    EN_MACRO(en_5, N5)
+    EN_MACRO(en_6, N6)
+    EN_MACRO(en_7, N7)
+    EN_MACRO(en_8, N8)
+    EN_MACRO(en_9, N9)
 
     // EIJI 切替 → 記号キー（SYMBOL1_LAYER 用）
     EN_MACRO(en_under, UNDERSCORE)

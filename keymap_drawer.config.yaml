@@ -65,30 +65,9 @@ parse_config:
     APPLICATION: ☰
     PRINTSCREEN: PrtSc
     PAUSE_BREAK: Pause
-    # macOS 用 LANGUAGE_*（自作 OS 通知の意味で表示）
-    # LANGUAGE_1/2  : macOS 標準 (かな / 英数)
-    # LANGUAGE_3/4  : to_default_layer_macro の効果音用 (X_SOUND_1/2)
-    # LANGUAGE_5..8 : 左親指 layer-tap (LH_LAYER) が hold 中に OS に通知する signal
-    # LANGUAGE_9    : 右上 P キー (X_PP) で OS 側 (Karabiner 等) に渡すフック。
-    #                 X_QQ (左上 Q = LANGUAGE_8) と対になるシンメトリ命名
+    # macOS の IME 切替 (combo_kana / combo_eiji が出力)
     LANGUAGE_1: かな
     LANGUAGE_2: 英数
-    LANGUAGE_3: ♪1
-    LANGUAGE_4: ♪2
-    LANGUAGE_5: →Num
-    LANGUAGE_6: →Sym1
-    LANGUAGE_7: →Sym2
-    LANGUAGE_8: →Fn
-    LANGUAGE_9: →PP
-    # INTERNATIONAL_*（LL レイヤーの OS 通知）
-    INTERNATIONAL_1: ll-A
-    INTERNATIONAL_2: ll-Z
-    INTERNATIONAL_3: ll-Q
-    INTERNATIONAL_4: ll-N
-    INTERNATIONAL_5: ll-S1
-    INTERNATIONAL_6: ll-S2
-    INTERNATIONAL_7: ll-TL
-    INTERNATIONAL_8: ll-TR
   # 自作 macro / mod-morph の include 元
   zmk_additional_includes:
     - config
@@ -106,17 +85,17 @@ parse_config:
     "&msc SCRL_UP": ⤊
     "&msc SCRL_DOWN": ⤋
     "&bootloader": ⚙ boot
-    # EIJI 切替 → 数字 (NUM_LAYER)
-    "&en0": '0'
-    "&en1": '1'
-    "&en2": '2'
-    "&en3": '3'
-    "&en4": '4'
-    "&en5": '5'
-    "&en6": '6'
-    "&en7": '7'
-    "&en8": '8'
-    "&en9": '9'
+    # EIJI 切替 → 数字 (NUMBER_LAYER)
+    "&en_0": '0'
+    "&en_1": '1'
+    "&en_2": '2'
+    "&en_3": '3'
+    "&en_4": '4'
+    "&en_5": '5'
+    "&en_6": '6'
+    "&en_7": '7'
+    "&en_8": '8'
+    "&en_9": '9'
     # EIJI 切替 → 記号 (SYMBOL1_LAYER)
     "&en_under": '_'
     "&en_pipe":  '|'
@@ -154,10 +133,9 @@ parse_config:
     # combo (ime_kana/ime_eiji の tap binding として呼ばれる)
     "&kana": かな
     "&eiji": 英数
-  # 修飾子関数の表記制御。
-  # ⇥/⌦/←/→/↑/↓ レイヤー (X_TAB/X_DELETE/X_*_ARROW) では各 wrapper が 2mod
-  # 付与するが、レイヤーラベルで暗黙に分かるので special_combinations で空文字に
-  # して非表示にする。Default 左親指の 4mod chain (X_LH_NUM 等) は意味あるので維持。
+  # 修飾子関数の表記。arrow mod-morph (ar_*) は ALL_MODS
+  # (LGUI|LSFT|LCTL|LALT) を keep するため、keymap-drawer 上は左 4mod chain
+  # として現れる。これを Hyper+ に短縮 (Hyper = Ctrl+Alt+Cmd+Shift, macOS 慣習)。
   modifier_fn_map:
     left_ctrl: Ctl+
     right_ctrl: Ctl+
@@ -170,18 +148,6 @@ parse_config:
     keycode_combiner: "{mods}{key}"
     mod_combiner: "{mod_1}{mod_2}"
     special_combinations:
-      # 2mod sub-layers: 表示しない (レイヤーラベルで暗黙)
-      "right_shift+right_alt": ""    # X_TAB (⇥)
-      "right_shift+right_gui": ""    # X_DELETE (⌦)
-      "right_alt+right_ctrl": ""     # X_LEFT_ARROW (←)
-      "right_gui+right_ctrl": ""     # X_RIGHT_ARROW (→)
-      "right_shift+right_ctrl": ""   # X_UP_ARROW (↑)
-      "right_gui+right_alt": ""      # X_DOWN_ARROW (↓)
-      # 4mod chain (Default 左親指 LH_LAYER / X_QQ / X_PP): Hyper として短縮。
-      # Hyper = Ctrl + Alt + Cmd + Shift の 4mod 同時押し (macOS 慣習)。
-      # ここでは Right mods 版 (RG/RA/RS/RC) も同義として扱う
-      "right_ctrl+right_shift+right_alt+right_gui": "Hyper+"
-      # keymap-drawer デフォルト
       "left_ctrl+left_alt+left_gui+left_shift": "Hyper+"
       "left_ctrl+left_alt+left_shift": "Meh+"
 

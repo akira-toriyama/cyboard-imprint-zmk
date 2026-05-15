@@ -1,27 +1,72 @@
 // macros { } ブロック内に #include して使う
-// 詳細な eiji 系マクロは eiji_macros.dtsi をさらに #include
+// 数字 / 記号の eiji 系マクロ (en_*) は eiji_macros.dtsi をさらに #include
 
-    // レイヤー移動で効果音を鳴らす
-    to_default_layer_macro: to_default_layer_macro {
-      compatible = "zmk,behavior-macro-one-param";
-      #binding-cells = <1>;
-      bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER>, <&macro_tap &kp X_SOUND_2>, <&macro_tap &to DEFAULT_LAYER>;
-    };
+    // ==== IME 切替 ====
 
-    // 英語入力に切り替える
+    // EIJI 切替 → 渡された base key を press/release。letter morph (al_*) の
+    // Shift 時に呼ばれ、英語入力モードに移してから大文字を出力する。
     eiji_macro: eiji_macro {
       compatible = "zmk,behavior-macro-one-param";
       #binding-cells = <1>;
       bindings = <&macro_tap &kp EIJI>, <&macro_param_1to1>, <&macro_press &kp MACRO_PLACEHOLDER>, <&macro_pause_for_release>, <&macro_param_1to1>, <&macro_release &kp MACRO_PLACEHOLDER>;
     };
+    // かな入力へ切替 (combo_kana の ime_kana tap binding)
     kana: kana {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&kp KANA>;
     };
+    // 英数入力へ切替 (combo_eiji の ime_eiji tap binding / eiji_macro と併用)
     eiji: eiji {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&kp EIJI>;
     };
+
+    // ==== 親指 chord (TU_LL / TU_LM = layer + 同名修飾子を同時 hold) ====
+    //
+    // t_*_* が「layer 起動 → 修飾子 press」の順で発火するため、押下中の他キーは
+    // T_*_LAYER 経由で routed され、対応する *_kp マクロに届く。*_kp 側は
+    // base key に対し「右 4 修飾子のうち 3 つ」を付けて送出する (layer ごとに
+    // 欠ける 1 つが異なり、OS 側でレイヤーを識別できる)。
+    //   LL: RALT+RSHIFT+RCTRL  (RGUI なし)   LM: RGUI+RSHIFT+RCTRL (RALT なし)
+    //   RM: RGUI+RALT +RCTRL  (RSHIFT なし)  RR: RGUI+RALT +RSHIFT (RCTRL なし)
+
+    // T_LL_LAYER 起動 + LCtrl press
+    t_ll_ctrl: t_ll_ctrl {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_press &mo T_LL_LAYER>, <&macro_press &kp LCTRL>, <&macro_pause_for_release>, <&macro_release &kp LCTRL>, <&macro_release &mo T_LL_LAYER>;
+    };
+    // T_LL chord: hold 中の LCtrl を release し、RALT+RSHIFT+RCTRL で base key 送出
+    ll_kp: ll_kp {
+      compatible = "zmk,behavior-macro-one-param";
+      #binding-cells = <1>;
+      bindings = <&macro_release &kp LCTRL>, <&macro_press &kp RALT>, <&macro_press &kp RSHIFT>, <&macro_press &kp RCTRL>, <&macro_param_1to1>, <&macro_press &kp MACRO_PLACEHOLDER>, <&macro_pause_for_release>, <&macro_param_1to1>, <&macro_release &kp MACRO_PLACEHOLDER>, <&macro_release &kp RALT>, <&macro_release &kp RSHIFT>, <&macro_release &kp RCTRL>;
+    };
+    // T_LM_LAYER 起動 + LAlt press
+    t_lm_alt: t_lm_alt {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_press &mo T_LM_LAYER>, <&macro_press &kp LALT>, <&macro_pause_for_release>, <&macro_release &kp LALT>, <&macro_release &mo T_LM_LAYER>;
+    };
+    // T_LM chord: hold 中の LAlt を release し、RGUI+RSHIFT+RCTRL で base key 送出
+    lm_kp: lm_kp {
+      compatible = "zmk,behavior-macro-one-param";
+      #binding-cells = <1>;
+      bindings = <&macro_release &kp LALT>, <&macro_press &kp RGUI>, <&macro_press &kp RSHIFT>, <&macro_press &kp RCTRL>, <&macro_param_1to1>, <&macro_press &kp MACRO_PLACEHOLDER>, <&macro_pause_for_release>, <&macro_param_1to1>, <&macro_release &kp MACRO_PLACEHOLDER>, <&macro_release &kp RGUI>, <&macro_release &kp RSHIFT>, <&macro_release &kp RCTRL>;
+    };
+    // T_RM chord (TU_RM = &mo T_RM_LAYER): RGUI+RALT+RCTRL で base key 送出
+    rm_kp: rm_kp {
+      compatible = "zmk,behavior-macro-one-param";
+      #binding-cells = <1>;
+      bindings = <&macro_press &kp RGUI>, <&macro_press &kp RALT>, <&macro_press &kp RCTRL>, <&macro_param_1to1>, <&macro_press &kp MACRO_PLACEHOLDER>, <&macro_pause_for_release>, <&macro_param_1to1>, <&macro_release &kp MACRO_PLACEHOLDER>, <&macro_release &kp RGUI>, <&macro_release &kp RALT>, <&macro_release &kp RCTRL>;
+    };
+    // T_RR chord (TU_RR = &mo T_RR_LAYER): RGUI+RALT+RSHIFT で base key 送出
+    rr_kp: rr_kp {
+      compatible = "zmk,behavior-macro-one-param";
+      #binding-cells = <1>;
+      bindings = <&macro_press &kp RGUI>, <&macro_press &kp RALT>, <&macro_press &kp RSHIFT>, <&macro_param_1to1>, <&macro_press &kp MACRO_PLACEHOLDER>, <&macro_pause_for_release>, <&macro_param_1to1>, <&macro_release &kp MACRO_PLACEHOLDER>, <&macro_release &kp RGUI>, <&macro_release &kp RALT>, <&macro_release &kp RSHIFT>;
+    };
+
     #include "eiji_macros.dtsi"
