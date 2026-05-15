@@ -1,218 +1,57 @@
 // EIJI 切替 → 数字 / 記号キー用の専用 behavior 群
 // macros { } ブロック内に #include して使う
+// EN_MACRO マクロは keymap_defines.h で定義
+//
+// 各行末の `disp:[X]` が keymap-drawer 上の表示文字 (= 唯一のソース)。
+// keymap_drawer.config.yaml の raw_binding_map の en_* ブロックは
+// scripts/gen_eiji_drawer_map.py がこのファイルから自動生成する
+// (CI: .github/workflows/verify-eiji-sync.yml が同期を検証)。
+// 追加・削除・リネーム時はこのファイルだけ編集し、スクリプトを再実行する。
 
-    // EIJI 切替 → 数字キー（NUM_LAYER 用）
-    en0: en0 { // 0
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N0>, <&macro_pause_for_release>, <&macro_release &kp N0>;
-    };
-    en1: en1 { // 1
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N1>, <&macro_pause_for_release>, <&macro_release &kp N1>;
-    };
-    en2: en2 { // 2
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N2>, <&macro_pause_for_release>, <&macro_release &kp N2>;
-    };
-    en3: en3 { // 3
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N3>, <&macro_pause_for_release>, <&macro_release &kp N3>;
-    };
-    en4: en4 { // 4
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N4>, <&macro_pause_for_release>, <&macro_release &kp N4>;
-    };
-    en5: en5 { // 5
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N5>, <&macro_pause_for_release>, <&macro_release &kp N5>;
-    };
-    en6: en6 { // 6
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N6>, <&macro_pause_for_release>, <&macro_release &kp N6>;
-    };
-    en7: en7 { // 7
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N7>, <&macro_pause_for_release>, <&macro_release &kp N7>;
-    };
-    en8: en8 { // 8
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N8>, <&macro_pause_for_release>, <&macro_release &kp N8>;
-    };
-    en9: en9 { // 9
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp N9>, <&macro_pause_for_release>, <&macro_release &kp N9>;
-    };
+    // EIJI 切替 → 数字キー（NUMBER_LAYER 用）
+    EN_MACRO(en_0, N0)  // disp:[0]
+    EN_MACRO(en_1, N1)  // disp:[1]
+    EN_MACRO(en_2, N2)  // disp:[2]
+    EN_MACRO(en_3, N3)  // disp:[3]
+    EN_MACRO(en_4, N4)  // disp:[4]
+    EN_MACRO(en_5, N5)  // disp:[5]
+    EN_MACRO(en_6, N6)  // disp:[6]
+    EN_MACRO(en_7, N7)  // disp:[7]
+    EN_MACRO(en_8, N8)  // disp:[8]
+    EN_MACRO(en_9, N9)  // disp:[9]
 
     // EIJI 切替 → 記号キー（SYMBOL1_LAYER 用）
-    en_under: en_under { // _
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp UNDERSCORE>, <&macro_pause_for_release>, <&macro_release &kp UNDERSCORE>;
-    };
-    en_pipe: en_pipe { // |
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp PIPE>, <&macro_pause_for_release>, <&macro_release &kp PIPE>;
-    };
-    en_amp: en_amp { // &
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp AMPERSAND>, <&macro_pause_for_release>, <&macro_release &kp AMPERSAND>;
-    };
-    en_excl: en_excl { // !
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp EXCLAMATION>, <&macro_pause_for_release>, <&macro_release &kp EXCLAMATION>;
-    };
-    en_q: en_q { // ?
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp QUESTION>, <&macro_pause_for_release>, <&macro_release &kp QUESTION>;
-    };
-    en_hash: en_hash { // #
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp HASH>, <&macro_pause_for_release>, <&macro_release &kp HASH>;
-    };
-    en_comma: en_comma { // ,
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp COMMA>, <&macro_pause_for_release>, <&macro_release &kp COMMA>;
-    };
-    en_dot: en_dot { // .
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp PERIOD>, <&macro_pause_for_release>, <&macro_release &kp PERIOD>;
-    };
-    en_semi: en_semi { // ;
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp SEMICOLON>, <&macro_pause_for_release>, <&macro_release &kp SEMICOLON>;
-    };
-    en_colon: en_colon { // :
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp COLON>, <&macro_pause_for_release>, <&macro_release &kp COLON>;
-    };
-    en_at: en_at { // @
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp AT_SIGN>, <&macro_pause_for_release>, <&macro_release &kp AT_SIGN>;
-    };
-    en_dq: en_dq { // "
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp DOUBLE_QUOTES>, <&macro_pause_for_release>, <&macro_release &kp DOUBLE_QUOTES>;
-    };
-    en_sq: en_sq { // '
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp SINGLE_QUOTE>, <&macro_pause_for_release>, <&macro_release &kp SINGLE_QUOTE>;
-    };
-    en_grave: en_grave { // `
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp GRAVE>, <&macro_pause_for_release>, <&macro_release &kp GRAVE>;
-    };
-    en_slash: en_slash { // /
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp SLASH>, <&macro_pause_for_release>, <&macro_release &kp SLASH>;
-    };
-    en_bsl: en_bsl { // backslash
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp BACKSLASH>, <&macro_pause_for_release>, <&macro_release &kp BACKSLASH>;
-    };
+    EN_MACRO(en_under, UNDERSCORE)     // disp:[_]
+    EN_MACRO(en_pipe,  PIPE)           // disp:[|]
+    EN_MACRO(en_amp,   AMPERSAND)      // disp:[&]
+    EN_MACRO(en_excl,  EXCLAMATION)    // disp:[!]
+    EN_MACRO(en_q,     QUESTION)       // disp:[?]
+    EN_MACRO(en_hash,  HASH)           // disp:[#]
+    EN_MACRO(en_comma, COMMA)          // disp:[,]
+    EN_MACRO(en_dot,   PERIOD)         // disp:[.]
+    EN_MACRO(en_semi,  SEMICOLON)      // disp:[;]
+    EN_MACRO(en_colon, COLON)          // disp:[:]
+    EN_MACRO(en_at,    AT_SIGN)        // disp:[@]
+    EN_MACRO(en_dq,    DOUBLE_QUOTES)  // disp:["]
+    EN_MACRO(en_sq,    SINGLE_QUOTE)   // disp:[']
+    EN_MACRO(en_grave, GRAVE)          // disp:[`]
+    EN_MACRO(en_slash, SLASH)          // disp:[/]
+    EN_MACRO(en_bsl,   BACKSLASH)      // disp:[\]
 
     // EIJI 切替 → 記号キー（SYMBOL2_LAYER 用）
-    en_caret: en_caret { // ^
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp CARET>, <&macro_pause_for_release>, <&macro_release &kp CARET>;
-    };
-    en_lt: en_lt { // <
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp LESS_THAN>, <&macro_pause_for_release>, <&macro_release &kp LESS_THAN>;
-    };
-    en_gt: en_gt { // >
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp GREATER_THAN>, <&macro_pause_for_release>, <&macro_release &kp GREATER_THAN>;
-    };
-    en_lbkt: en_lbkt { // [
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp LEFT_BRACKET>, <&macro_pause_for_release>, <&macro_release &kp LEFT_BRACKET>;
-    };
-    en_rbkt: en_rbkt { // ]
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp RIGHT_BRACKET>, <&macro_pause_for_release>, <&macro_release &kp RIGHT_BRACKET>;
-    };
-    en_eq: en_eq { // =
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp EQUAL>, <&macro_pause_for_release>, <&macro_release &kp EQUAL>;
-    };
-    en_plus: en_plus { // +
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp PLUS>, <&macro_pause_for_release>, <&macro_release &kp PLUS>;
-    };
-    en_minus: en_minus { // -
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp MINUS>, <&macro_pause_for_release>, <&macro_release &kp MINUS>;
-    };
-    en_ast: en_ast { // *
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp ASTERISK>, <&macro_pause_for_release>, <&macro_release &kp ASTERISK>;
-    };
-    en_pct: en_pct { // %
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp PERCENT>, <&macro_pause_for_release>, <&macro_release &kp PERCENT>;
-    };
-    en_dollar: en_dollar { // $
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp DOLLAR>, <&macro_pause_for_release>, <&macro_release &kp DOLLAR>;
-    };
-    en_tilde: en_tilde { // ~
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp TILDE>, <&macro_pause_for_release>, <&macro_release &kp TILDE>;
-    };
-    en_lpar: en_lpar { // (
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp LPAR>, <&macro_pause_for_release>, <&macro_release &kp LPAR>;
-    };
-    en_rpar: en_rpar { // )
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp RPAR>, <&macro_pause_for_release>, <&macro_release &kp RPAR>;
-    };
-    en_lbrc: en_lbrc { // {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp LEFT_BRACE>, <&macro_pause_for_release>, <&macro_release &kp LEFT_BRACE>;
-    };
-    en_rbrc: en_rbrc { // }
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_tap &kp EIJI>, <&macro_press &kp RIGHT_BRACE>, <&macro_pause_for_release>, <&macro_release &kp RIGHT_BRACE>;
-    };
+    EN_MACRO(en_caret,  CARET)         // disp:[^]
+    EN_MACRO(en_lt,     LESS_THAN)     // disp:[<]
+    EN_MACRO(en_gt,     GREATER_THAN)  // disp:[>]
+    EN_MACRO(en_lbkt,   LEFT_BRACKET)  // disp:[[]
+    EN_MACRO(en_rbkt,   RIGHT_BRACKET) // disp:[]]
+    EN_MACRO(en_eq,     EQUAL)         // disp:[=]
+    EN_MACRO(en_plus,   PLUS)          // disp:[+]
+    EN_MACRO(en_minus,  MINUS)         // disp:[-]
+    EN_MACRO(en_ast,    ASTERISK)      // disp:[*]
+    EN_MACRO(en_pct,    PERCENT)       // disp:[%]
+    EN_MACRO(en_dollar, DOLLAR)        // disp:[$]
+    EN_MACRO(en_tilde,  TILDE)         // disp:[~]
+    EN_MACRO(en_lpar,   LPAR)          // disp:[(]
+    EN_MACRO(en_rpar,   RPAR)          // disp:[)]
+    EN_MACRO(en_lbrc,   LEFT_BRACE)    // disp:[{]
+    EN_MACRO(en_rbrc,   RIGHT_BRACE)   // disp:[}]

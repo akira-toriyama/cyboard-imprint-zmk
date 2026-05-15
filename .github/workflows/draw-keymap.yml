@@ -19,7 +19,3 @@ jobs:
     with:
       commit_message: ":bento:`x.x.o`: keymap-drawer の SVG を更新"
       amend_commit: false
-      # config/imprint.json には "Imprint" レイアウトしかないが、
-      # keymap parse は matrix-transform 名 (imprint_letters_only_full_bottom_row)
-      # から layout 名を推定するためミスマッチが起きる。draw 時に明示指定して回避。
-      draw_args: "imprint:'-l Imprint'"
