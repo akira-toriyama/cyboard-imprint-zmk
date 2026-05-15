@@ -137,45 +137,45 @@
     T_LL_LAYER {
       display-name = "LL";
       bindings = <
-        &none  &ll_kp X_Q  &ll_kp X_W  &ll_kp X_E  &ll_kp X_R  &ll_kp X_T                    &ll_kp X_Y  &ll_kp X_U  &ll_kp X_I  &ll_kp X_O  &ll_kp X_P  &none
-        &none  &ll_kp X_A  &ll_kp X_S  &ll_kp X_D  &ll_kp X_F  &ll_kp X_G                    &ll_kp X_H  &ll_kp X_J  &ll_kp X_K  &ll_kp X_L  &ll_kp X_1  &none
-        &none  &ll_kp X_Z  &ll_kp X_X  &ll_kp X_C  &ll_kp X_V  &ll_kp X_B                    &ll_kp X_N  &ll_kp X_M  &ll_kp X_2  &ll_kp X_3  &ll_kp X_4  &none
-        &none  &none       &none       &none       &none                                                 &none       &none       &none       &none       &none
-                                                  &none  &none  &none                    &none  &none  &none
-                                                  &none  &none  &none                    &none  &none  &none
+        &none  &ll_kp Q  &ll_kp W  &ll_kp E  &ll_kp R  &ll_kp T                    &ll_kp Y  &ll_kp U  &ll_kp I    &ll_kp O    &ll_kp P    &none
+        &none  &ll_kp A  &ll_kp S  &ll_kp D  &ll_kp F  &ll_kp G                    &ll_kp H  &ll_kp J  &ll_kp K    &ll_kp L    &ll_kp X_1  &none
+        &none  &ll_kp Z  &ll_kp X  &ll_kp C  &ll_kp V  &ll_kp B                    &ll_kp N  &ll_kp M  &ll_kp X_2  &ll_kp X_3  &ll_kp X_4  &none
+        &none  &none     &none     &none     &none                                           &none     &none       &none       &none       &none
+                                           &none  &none  &none                    &none  &none  &none
+                                           &none  &none  &none                    &none  &none  &none
       >;
     };
     T_LM_LAYER {
       display-name = "LM";
       bindings = <
-        &none  &lm_kp X_Q  &lm_kp X_W  &lm_kp X_E  &lm_kp X_R  &lm_kp X_T                    &lm_kp X_Y  &lm_kp X_U  &lm_kp X_I  &lm_kp X_O  &lm_kp X_P  &none
-        &none  &lm_kp X_A  &lm_kp X_S  &lm_kp X_D  &lm_kp X_F  &lm_kp X_G                    &lm_kp X_H  &lm_kp X_J  &lm_kp X_K  &lm_kp X_L  &lm_kp X_1  &none
-        &none  &lm_kp X_Z  &lm_kp X_X  &lm_kp X_C  &lm_kp X_V  &lm_kp X_B                    &lm_kp X_N  &lm_kp X_M  &lm_kp X_2  &lm_kp X_3  &lm_kp X_4  &none
-        &none  &none       &none       &none       &none                                                 &none       &none       &none       &none       &none
-                                                  &none  &none  &none                    &none  &none  &none
-                                                  &none  &none  &none                    &none  &none  &none
+        &none  &lm_kp Q  &lm_kp W  &lm_kp E  &lm_kp R  &lm_kp T                    &lm_kp Y  &lm_kp U  &lm_kp I    &lm_kp O    &lm_kp P    &none
+        &none  &lm_kp A  &lm_kp S  &lm_kp D  &lm_kp F  &lm_kp G                    &lm_kp H  &lm_kp J  &lm_kp K    &lm_kp L    &lm_kp X_1  &none
+        &none  &lm_kp Z  &lm_kp X  &lm_kp C  &lm_kp V  &lm_kp B                    &lm_kp N  &lm_kp M  &lm_kp X_2  &lm_kp X_3  &lm_kp X_4  &none
+        &none  &none     &none     &none     &none                                           &none     &none       &none       &none       &none
+                                           &none  &none  &none                    &none  &none  &none
+                                           &none  &none  &none                    &none  &none  &none
       >;
     };
     T_RM_LAYER {
       display-name = "RM";
       bindings = <
-        &none  &rm_kp X_Q  &rm_kp X_W  &rm_kp X_E  &rm_kp X_R  &rm_kp X_T                    &rm_kp X_Y  &rm_kp X_U  &rm_kp X_I  &rm_kp X_O  &rm_kp X_P  &none
-        &none  &rm_kp X_A  &rm_kp X_S  &rm_kp X_D  &rm_kp X_F  &rm_kp X_G                    &rm_kp X_H  &rm_kp X_J  &rm_kp X_K  &rm_kp X_L  &rm_kp X_1  &none
-        &none  &rm_kp X_Z  &rm_kp X_X  &rm_kp X_C  &rm_kp X_V  &rm_kp X_B                    &rm_kp X_N  &rm_kp X_M  &rm_kp X_2  &rm_kp X_3  &rm_kp X_4  &none
-        &none  &none       &none       &none       &none                                                 &none       &none       &none       &none       &none
-                                                  &none  &none  &none                    &none  &none  &none
-                                                  &none  &none  &none                    &none  &none  &none
+        &none  &rm_kp Q  &rm_kp W  &rm_kp E  &rm_kp R  &rm_kp T                    &rm_kp Y  &rm_kp U  &rm_kp I    &rm_kp O    &rm_kp P    &none
+        &none  &rm_kp A  &rm_kp S  &rm_kp D  &rm_kp F  &rm_kp G                    &rm_kp H  &rm_kp J  &rm_kp K    &rm_kp L    &rm_kp X_1  &none
+        &none  &rm_kp Z  &rm_kp X  &rm_kp C  &rm_kp V  &rm_kp B                    &rm_kp N  &rm_kp M  &rm_kp X_2  &rm_kp X_3  &rm_kp X_4  &none
+        &none  &none     &none     &none     &none                                           &none     &none       &none       &none       &none
+                                           &none  &none  &none                    &none  &none  &none
+                                           &none  &none  &none                    &none  &none  &none
       >;
     };
     T_RR_LAYER {
       display-name = "RR";
       bindings = <
-        &none  &rr_kp X_Q  &rr_kp X_W  &rr_kp X_E  &rr_kp X_R  &rr_kp X_T                    &rr_kp X_Y  &rr_kp X_U  &rr_kp X_I  &rr_kp X_O  &rr_kp X_P  &none
-        &none  &rr_kp X_A  &rr_kp X_S  &rr_kp X_D  &rr_kp X_F  &rr_kp X_G                    &rr_kp X_H  &rr_kp X_J  &rr_kp X_K  &rr_kp X_L  &rr_kp X_1  &none
-        &none  &rr_kp X_Z  &rr_kp X_X  &rr_kp X_C  &rr_kp X_V  &rr_kp X_B                    &rr_kp X_N  &rr_kp X_M  &rr_kp X_2  &rr_kp X_3  &rr_kp X_4  &none
-        &none  &none       &none       &none       &none                                                 &none       &none       &none       &none       &none
-                                                  &none  &none  &none                    &none  &none  &none
-                                                  &none  &none  &none                    &none  &none  &none
+        &none  &rr_kp Q  &rr_kp W  &rr_kp E  &rr_kp R  &rr_kp T                    &rr_kp Y  &rr_kp U  &rr_kp I    &rr_kp O    &rr_kp P    &none
+        &none  &rr_kp A  &rr_kp S  &rr_kp D  &rr_kp F  &rr_kp G                    &rr_kp H  &rr_kp J  &rr_kp K    &rr_kp L    &rr_kp X_1  &none
+        &none  &rr_kp Z  &rr_kp X  &rr_kp C  &rr_kp V  &rr_kp B                    &rr_kp N  &rr_kp M  &rr_kp X_2  &rr_kp X_3  &rr_kp X_4  &none
+        &none  &none     &none     &none     &none                                           &none     &none       &none       &none       &none
+                                           &none  &none  &none                    &none  &none  &none
+                                           &none  &none  &none                    &none  &none  &none
       >;
     };
   };
