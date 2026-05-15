@@ -50,6 +50,33 @@
       <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>
 
 // --------------------------------------------------------------------
+// keymap 構造マクロ (bindings = < > 内で使う。keymap-drawer も preprocess 展開)
+// --------------------------------------------------------------------
+
+// 1 row 12 キーすべて &none (arrow レイヤーの上 3 段など)
+#define ROW_NONE \
+  &none &none &none &none &none &none   &none &none &none &none &none &none
+
+// 親指 2 段: 上段 = 全 &none / 下段 = TD_* (sub-layer 共通)
+#define THUMB_TD \
+  &none &none &none   &none &none &none \
+  TD_LL TD_LM &none   &none TD_RM TD_RR
+
+// 親指 2 段すべて &none (T_*_LAYER 共通)
+#define THUMB_NONE \
+  &none &none &none   &none &none &none \
+  &none &none &none   &none &none &none
+
+// row4 (5+5) すべて &none
+#define ROW4_NONE \
+  &none &none &none &none &none   &none &none &none &none &none
+
+// sub-layer 共通 footer: row4 全 &none + THUMB_TD (NUMBER/SYMBOL*/FUNCTION)
+#define FOOTER_TD   ROW4_NONE THUMB_TD
+// T_*_LAYER 共通 footer: row4 全 &none + 親指全 &none
+#define FOOTER_NONE ROW4_NONE THUMB_NONE
+
+// --------------------------------------------------------------------
 // behavior 生成マクロ
 // --------------------------------------------------------------------
 

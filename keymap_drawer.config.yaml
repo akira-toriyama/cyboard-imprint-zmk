@@ -72,9 +72,9 @@ parse_config:
   zmk_additional_includes:
     - config
   zmk_combos: {}
-  # &mkp / &msc / &bootloader / &en* / &kana / &eiji 等、`&kp` 以外の binding をリネーム。
-  # NOTE: &en* の追加・削除時は config/eiji_macros.dtsi も同期させること
-  #       (keymap-drawer は macro の display-name を参照しないので二重管理)
+  # `&kp` 以外の binding の表示名。
+  # &en_* ブロックは config/eiji_macros.dtsi から自動生成 (下記マーカー間)。
+  # scripts/gen_eiji_drawer_map.py / CI verify-eiji-sync.yml で同期を担保。
   raw_binding_map:
     # ポインティング / システム
     "&mkp MB1": 🖱L
@@ -85,35 +85,38 @@ parse_config:
     "&msc SCRL_UP": ⤊
     "&msc SCRL_DOWN": ⤋
     "&bootloader": ⚙ boot
-    # EIJI 切替 → 数字 (NUMBER_LAYER)
-    "&en_0": '0'
-    "&en_1": '1'
-    "&en_2": '2'
-    "&en_3": '3'
-    "&en_4": '4'
-    "&en_5": '5'
-    "&en_6": '6'
-    "&en_7": '7'
-    "&en_8": '8'
-    "&en_9": '9'
-    # EIJI 切替 → 記号 (SYMBOL1_LAYER)
-    "&en_under": '_'
-    "&en_pipe":  '|'
-    "&en_amp":   '&'
-    "&en_excl":  '!'
-    "&en_q":     '?'
-    "&en_hash":  '#'
-    "&en_comma": ','
-    "&en_dot":   '.'
-    "&en_semi":  ';'
-    "&en_colon": ':'
-    "&en_at":    '@'
-    "&en_dq":    '"'
-    "&en_sq":    "'"
-    "&en_grave": '`'
-    "&en_slash": '/'
-    "&en_bsl":   '\'
-    # EIJI 切替 → 記号 (SYMBOL2_LAYER)
+    # === AUTO-GENERATED (scripts/gen_eiji_drawer_map.py from config/eiji_macros.dtsi) — do not edit ===
+    # EIJI 切替 → 数字キー（NUMBER_LAYER 用）
+    "&en_0":      '0'
+    "&en_1":      '1'
+    "&en_2":      '2'
+    "&en_3":      '3'
+    "&en_4":      '4'
+    "&en_5":      '5'
+    "&en_6":      '6'
+    "&en_7":      '7'
+    "&en_8":      '8'
+    "&en_9":      '9'
+
+    # EIJI 切替 → 記号キー（SYMBOL1_LAYER 用）
+    "&en_under":  '_'
+    "&en_pipe":   '|'
+    "&en_amp":    '&'
+    "&en_excl":   '!'
+    "&en_q":      '?'
+    "&en_hash":   '#'
+    "&en_comma":  ','
+    "&en_dot":    '.'
+    "&en_semi":   ';'
+    "&en_colon":  ':'
+    "&en_at":     '@'
+    "&en_dq":     '"'
+    "&en_sq":     "'"
+    "&en_grave":  '`'
+    "&en_slash":  '/'
+    "&en_bsl":    '\'
+
+    # EIJI 切替 → 記号キー（SYMBOL2_LAYER 用）
     "&en_caret":  '^'
     "&en_lt":     '<'
     "&en_gt":     '>'
@@ -130,6 +133,7 @@ parse_config:
     "&en_rpar":   ')'
     "&en_lbrc":   '{'
     "&en_rbrc":   '}'
+    # === END AUTO-GENERATED ===
     # combo (ime_kana/ime_eiji の tap binding として呼ばれる)
     "&kana": かな
     "&eiji": 英数
